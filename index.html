@@ -81,11 +81,17 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background-color: transparent;
+      background-color: #faf8f5;
       background-image: url('img/fondo-eucalipto.jpg');
       background-position: center top;
       background-repeat: no-repeat;
       background-size: auto 100%;
+      border-bottom: none;
+      box-shadow: none;
+    }
+
+    #hero:focus {
+      outline: none;
     }
 
     #hero-content {
@@ -161,6 +167,11 @@
         padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
         padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
       }
+    }
+
+    #countdown-section {
+      border-top: none;
+      box-shadow: none;
     }
 
     #countdown-section .cd-num {
