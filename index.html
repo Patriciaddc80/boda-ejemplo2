@@ -40,6 +40,7 @@
     };
   </script>
   <style>
+    /* Mobile-first: estilos base = móvil; @media (min-width:…) = tablet/desktop */
     /* ─── Reset ─── */
     *,
     *::before,
@@ -51,27 +52,40 @@
 
     html {
       scroll-behavior: smooth;
+      background-color: #faf8f5;
+      overflow-x: hidden;
     }
 
     body {
       font-family: "Tenor Sans", sans-serif;
-      background: rgba(255, 255, 255, 0.75);
       color: #3a3632;
       -webkit-font-smoothing: antialiased;
+      background-color: #faf8f5;
+      /* Textura papel: tamaño intrínseco + repeat = sin reescalar el bitmap (máxima nitidez) */
+      background-image: url('img/fondo-blanco-eucalipto1.jpg');
+      background-size: auto;
+      background-repeat: repeat;
+      background-position: 0 0;
+      background-attachment: scroll;
     }
 
-    /* ─── Hero ─── */
+    /* ─── Cabecera / hero: eucalipto a tamaño nativo en altura (sin cover que estira) ─── */
     #hero {
       position: relative;
       width: 100%;
       max-width: 100%;
+      min-height: 100dvh;
       min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.75) url('img/fondo-eucalipto.jpg') center center / cover no-repeat;
+      background-color: transparent;
+      background-image: url('img/fondo-eucalipto.jpg');
+      background-position: center top;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
     }
 
     #hero-content {
@@ -79,78 +93,73 @@
       z-index: 1;
       text-align: center;
       width: 100%;
-      max-width: min(92vw, 40rem);
+      max-width: min(94vw, 40rem);
       margin-left: auto;
       margin-right: auto;
       box-sizing: border-box;
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
-      padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
-      padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+      padding-top: max(1.25rem, env(safe-area-inset-top, 0px));
+      padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+      padding-left: max(1rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1rem, env(safe-area-inset-right, 0px));
     }
 
-    @media (max-width: 1023px) {
-      #hero {
-        min-height: 100dvh;
-        min-height: 100svh;
-        background-size: auto 100%;
-        background-position: center center;
-        background-repeat: no-repeat;
-      }
+    #hero-content .ornament {
+      font-size: 12px;
+    }
 
-      #hero-content {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: min(94vw, 40rem);
-        padding-top: max(1.5rem, env(safe-area-inset-top, 0px));
-        padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
-        padding-left: max(1rem, env(safe-area-inset-left, 0px));
-        padding-right: max(1rem, env(safe-area-inset-right, 0px));
-      }
+    #hero-content .hero-kicker {
+      font-size: 8px !important;
+    }
 
-      #hero-content .ornament {
-        font-size: 12px;
-      }
+    #hero-content h1 {
+      font-size: clamp(14px, 4.1vw, 19px) !important;
+      padding-top: 0.5rem;
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.05rem !important;
+      line-height: 1.2 !important;
+    }
 
-      #hero-content .hero-kicker {
-        font-size: 8px !important;
-      }
+    #hero-content p {
+      font-size: clamp(11px, 3.2vw, 16px) !important;
+    }
 
+    #hero-content>div.inline-block {
+      margin-top: .65rem;
+    }
+
+    #hero-content>div.inline-block p {
+      font-size: 10px !important;
+      letter-spacing: .14em;
+    }
+
+    #hero-content p.hero-surname {
+      font-size: clamp(9px, 1.65vw, 12px) !important;
+      margin-top: -0.2rem !important;
+      margin-bottom: 1rem !important;
+    }
+
+    @media (min-width: 641px) {
       #hero-content h1 {
         font-size: clamp(26px, 7.5vw, 50px) !important;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0 !important;
+        line-height: 1.05 !important;
       }
 
-      #hero-content p {
-        font-size: clamp(11px, 3.2vw, 16px) !important;
-      }
-
-      #hero-content>div.inline-block {
-        margin-top: .65rem;
-      }
-
-      #hero-content>div.inline-block p {
-        font-size: 10px !important;
-        letter-spacing: .14em;
-      }
-
-      /* Apellido pequeño en móvil (la regla general de #hero-content p lo agrandaba) */
       #hero-content p.hero-surname {
-        font-size: clamp(9px, 1.65vw, 12px) !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
       }
     }
 
-    @media (max-width: 640px) {
-      #hero-content h1 {
-        font-size: clamp(14px, 4.1vw, 19px) !important;
-        padding-top: 0.5rem;
-        padding-bottom: 0.2rem;
-        margin-bottom: 0.05rem !important;
-        line-height: 1.2 !important;
-      }
-
-      #hero-content p.hero-surname {
-        margin-top: -0.2rem !important;
-        margin-bottom: 1rem !important;
+    @media (min-width: 1024px) {
+      #hero-content {
+        max-width: min(92vw, 40rem);
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+        padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+        padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
       }
     }
 
@@ -181,18 +190,30 @@
     /* ─── Countdown ─── */
     .cd-unit {
       text-align: center;
-      min-width: 56px;
+      min-width: 48px;
+    }
+
+    @media (min-width: 768px) {
+      .cd-unit {
+        min-width: 56px;
+      }
     }
 
     .cd-num {
       display: block;
       font-family: "Inter", system-ui, sans-serif;
       font-weight: 100;
-      font-size: clamp(22px, 5vw, 36px);
+      font-size: clamp(18px, 4.2vw, 32px);
       letter-spacing: 0.02em;
       font-variant-numeric: tabular-nums;
       color: #ede6d8;
       line-height: 1.1;
+    }
+
+    @media (min-width: 768px) {
+      .cd-num {
+        font-size: clamp(22px, 5vw, 36px);
+      }
     }
 
     .cd-lbl {
@@ -223,14 +244,20 @@
 
     /* ─── Info cards ─── */
     .info-card {
-      background: rgba(255, 255, 255, 0.75);
+      background: transparent;
       border: 1px solid #d1d5db;
-      padding: 2.5rem 2rem;
+      padding: 1.75rem 1.25rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: .6rem;
       transition: box-shadow .25s;
+    }
+
+    @media (min-width: 768px) {
+      .info-card {
+        padding: 2.5rem 2rem;
+      }
     }
 
     .info-card:hover {
@@ -277,7 +304,7 @@
     /* ─── RSVP ─── */
     #rsvp {
       position: relative;
-      background: rgba(255, 255, 255, 0.75);
+      background: transparent;
     }
 
     /* ─── Form ─── */
@@ -350,7 +377,7 @@
     .form-textarea {
       width: 100%;
       border: 1px solid #ccc;
-      background: rgba(255, 255, 255, .55);
+      background: transparent;
       padding: .65rem .75rem;
       font-family: "Tenor Sans", sans-serif;
       font-size: 13px;
@@ -433,7 +460,7 @@
     /* ─── Música de fondo (FAB) ─── */
     #bg-music-fab {
       position: fixed;
-      bottom: 1.25rem;
+      bottom: 5rem;
       right: 1rem;
       z-index: 9998;
       width: 3rem;
@@ -470,9 +497,9 @@
       height: 1.25rem;
     }
 
-    @media (max-width: 640px) {
+    @media (min-width: 641px) {
       #bg-music-fab {
-        bottom: 5rem;
+        bottom: 1.25rem;
       }
     }
 
@@ -516,6 +543,8 @@
     }
   </style>
   <link rel="preload" as="image" href="img/sobre-sello4.jpg" type="image/jpeg" />
+  <link rel="preload" as="image" href="img/fondo-blanco-eucalipto1.jpg" type="image/jpeg" />
+  <link rel="preload" as="image" href="img/fondo-eucalipto.jpg" type="image/jpeg" />
   <style id="splash-gate">
     #splash-invite {
       position: fixed !important;
@@ -595,7 +624,7 @@
       setTimeout(function () { splash.focus(); }, 0);
     })();
   </script>
-  <section id="hero">
+  <header id="hero" role="banner">
     <div id="hero-content">
       <div class="ornament hero-kicker mb-7 text-[11px] tracking-[.10em] uppercase text-gold">
         Nos casamos
@@ -620,10 +649,9 @@
         </p>
       </div>
     </div>
-  </section>
-  <section id="countdown-section" class="py-6 md:py-10 px-4 text-center fade-up"
-    style="background:rgba(255, 255, 255, 0.75);" aria-label="Cuenta regresiva">
-    <div id="countdown" class="flex items-start justify-center gap-7 md:gap-12 max-w-2xl mx-auto">
+  </header>
+  <section id="countdown-section" class="py-6 md:py-10 px-4 text-center fade-up" aria-label="Cuenta regresiva">
+    <div id="countdown" class="flex items-start justify-center gap-3 sm:gap-7 md:gap-12 max-w-2xl mx-auto">
       <div class="cd-unit"><span class="cd-num" id="cd-days">—</span><span class="cd-lbl">Días</span></div>
       <div class="cd-unit"><span class="cd-num" id="cd-hours">—</span><span class="cd-lbl">Horas</span></div>
       <div class="cd-unit"><span class="cd-num" id="cd-minutes">—</span><span class="cd-lbl">Minutos</span></div>
@@ -670,7 +698,7 @@
       </div>
     </div>
   </section>
-  <section id="lugar" class="pb-0" style="background:rgba(255, 255, 255, 0.75);">
+  <section id="lugar" class="pb-0">
     <div class="max-w-6xl mx-auto py-6 md:py-20"
       style="padding-left: clamp(0.75rem, 4vw, 2.25rem); padding-right: clamp(0.75rem, 4vw, 2.25rem);">
       <div class="max-w-4xl mx-auto fade-up text-center w-full">
@@ -711,8 +739,7 @@
         <img src="img/rsvp.gif" alt="" class="h-16 w-auto mx-auto mb-3 object-contain opacity-90" />
         <h2 class="section-title text-charcoal" style="font-size: clamp(26px, 5vw, 38px);">RSVP</h2>
       </div>
-      <div class="fade-up px-6 py-10 md:px-10 md:py-12"
-        style="background:rgba(255,255,255,.75); backdrop-filter:blur(4px);">
+      <div class="fade-up px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-12">
         <p class="text-sm text-muted text-center mb-8 font-display italic" style="font-size:15px;">
           CONFÍRMANOS TU ASISTENCIA
         </p>
@@ -864,7 +891,7 @@
       </div>
     </div>
   </section>
-  <section id="contacto" class="py-8 md:py-24 px-4 fade-up" style="background:rgba(255, 255, 255, 0.75);">
+  <section id="contacto" class="py-8 md:py-24 px-4 fade-up">
     <div class="max-w-3xl mx-auto text-center">
       <p class="section-eyebrow mb-4">¿Tenéis alguna duda? <br> Podéis enviarnos vuestros datos o preguntas tanto a
         nuestros
@@ -925,7 +952,7 @@
       </div>
     </div>
   </section>
-  <section class="py-5 md:py-8 px-4 text-center fade-up" style="background:#f8f3ef;">
+  <section class="py-5 md:py-8 px-4 text-center fade-up">
     <p class="section-eyebrow mb-6" style="color:#462a1c;">El comienzo de nuestra historia</p>
   </section>
   <footer class="py-2 px-4 text-center" style="background:#105f6e;">
