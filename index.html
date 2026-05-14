@@ -69,7 +69,7 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.75) url('img/copia-floral.jpg') left center / 105% auto no-repeat;
+      background: rgba(255, 255, 255, 0.75) url('img/fondo-olivo.png') center center / cover no-repeat;
     }
 
     #hero-content {
@@ -78,20 +78,21 @@
       text-align: center;
       padding: 1.5rem 2rem;
       max-width: min(90vw, 560px);
-      margin-left: clamp(2.25rem, 12vw, 11rem);
-      transform: translateY(clamp(-2.5rem, -3.5vh, -1.25rem));
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     @media (max-width: 1023px) {
       #hero {
-        background-size: contain;
+        background-size: cover;
         background-position: center center;
       }
 
       #hero-content {
         margin-left: auto;
-        margin-right: 0;
-        transform: translate(-1.25rem, -2rem);
+        margin-right: auto;
       }
 
       #hero-content .ornament {
