@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daniela & Leonardo 💍 · 12.09.2026</title>
+  <title>Daniela Depablos & Pablo Carrillo 💍 · 00.04.2027</title>
 
   <meta name="description"
-    content="Con muchísima ilusión, Daniela y Leonardo te invitan a celebrar el comienzo de su historia para siempre. 12.09.2026 · Confirma tu asistencia." />
+    content="Con muchísima ilusión, Daniela y Pablo te invitan a celebrar el comienzo de su historia para siempre. 00.04.2027 · Confirma tu asistencia." />
   <!-- Open Graph - Vista previa al compartir enlace -->
 
   <script src="data-bridge.js"></script>
@@ -462,6 +462,27 @@
       }
     }
 
+    body.splash-active {
+      overflow: hidden;
+    }
+
+    #splash-invite .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    #splash-invite:focus-visible {
+      outline: 3px solid #b89a6a;
+      outline-offset: -6px;
+    }
+
     /* ─── Ornament ─── */
     .ornament {
       display: inline-flex;
@@ -480,9 +501,86 @@
       background: #b89a6a;
     }
   </style>
+  <link rel="preload" as="image" href="img/imagen-sobre-sello.png" type="image/png" />
+  <style id="splash-gate">
+    #splash-invite {
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 2147483000 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 100vh !important;
+      min-height: 100dvh !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-sizing: border-box !important;
+      display: block !important;
+      overflow: hidden !important;
+      cursor: pointer !important;
+      background-color: #faf8f6 !important;
+      transition: opacity 0.6s ease, visibility 0.6s ease !important;
+    }
+
+    #splash-invite .splash-envelope-img {
+      position: absolute !important;
+      left: 0 !important;
+      top: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      max-width: none !important;
+      max-height: none !important;
+      display: block !important;
+      pointer-events: none !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+      z-index: 0 !important;
+    }
+
+    #splash-invite.is-dismissed {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+  </style>
 </head>
 
 <body>
+  <div id="splash-invite" role="button" tabindex="0" aria-label="Abrir la invitación">
+    <img class="splash-envelope-img" src="img/imagen-sobre-sello.png" alt="" decoding="async" fetchpriority="high"
+      aria-hidden="true" />
+    <span class="sr-only">Pulsa para abrir la invitación</span>
+  </div>
+  <script>
+    (function () {
+      var splash = document.getElementById('splash-invite');
+      if (!splash) return;
+      document.body.classList.add('splash-active');
+      function dismiss() {
+        if (splash.classList.contains('is-dismissed')) return;
+        splash.classList.add('is-dismissed');
+        document.body.classList.remove('splash-active');
+        window.scrollTo(0, 0);
+        setTimeout(function () {
+          splash.setAttribute('aria-hidden', 'true');
+          splash.removeAttribute('tabindex');
+          var hero = document.getElementById('hero');
+          if (hero) {
+            hero.setAttribute('tabindex', '-1');
+            hero.focus();
+          }
+        }, 650);
+      }
+      splash.addEventListener('click', dismiss);
+      splash.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dismiss();
+        }
+      });
+      setTimeout(function () { splash.focus(); }, 0);
+    })();
+  </script>
   <section id="hero">
     <div id="hero-content">
       <div class="ornament hero-kicker mb-7 text-[11px] tracking-[.10em] uppercase text-gold">
@@ -490,26 +588,21 @@
       </div>
       <h1 class="font-display font-light text-charcoal leading-[1.05] tracking-widest mb-2 py-5"
         style="font-size: clamp(26px, 7vw, 58px);">
-        DANIELA
-      </h1>
+        DANIELA DEPABLOS
+      </h1> <br>
       <p class="hero-surname font-display font-light text-charcoal tracking-[.12em] uppercase mb-6 -mt-1"
         style="font-size: clamp(11px, 1.4vw, 16px);">
-        GARCÍA GARCÍA
+        y
       </p>
-      <p class="font-display font-light text-gold tracking-[.45em] mb-2" style="font-size: clamp(13px, 2.5vw, 22px);">
-        LEONARDO
-      </p>
+
       <h1 class="font-display font-light text-charcoal leading-[1.05] tracking-widest mb-2 py-5"
         style="font-size: clamp(32px, 8.8vw, 78px);">
-        GARCÍA GARCÍA
+        PABLO CARRILLO
       </h1>
-      <p class="hero-surname font-display font-light text-charcoal tracking-[.12em] uppercase mb-6 -mt-1"
-        style="font-size: clamp(11px, 1.4vw, 16px);">
-        GARCÍA GARCÍA
-      </p>
+
       <div class="inline-block w-fit max-w-full border border-gold mb-0 mt-4 px-2 py-1.5">
         <p class="font-sans tracking-[.18em] text-[11px] uppercase text-charcoal whitespace-nowrap">
-          12 · 09 · 2026 &nbsp;·&nbsp; 19:00 h.
+          00 · 04 · 2027 &nbsp;·&nbsp; 19:00 h.
         </p>
       </div>
     </div>
@@ -797,25 +890,16 @@
         <div class="info-card text-center">
           <p class="section-eyebrow mb-1">Novia</p>
           <h3 class="font-display font-light text-charcoal mb-4" style="font-size:20px;">
-            Daniela<br />GARCÍA GARCÍA
+            Daniela Depablos<br />Carrillo
           </h3>
-          <a href="tel:+34679264784"
-            class="contact-pill flex items-center gap-2 text-sm text-charcoal hover:text-gold transition-colors justify-center mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold flex-shrink-0" fill="none"
-              viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-            </svg>
-            679 264 784
-          </a>
-          <a href="mailto:danielagarcia2307@gmail.com"
+          <a href="mailto:danieladepablos@gmail.com"
             class="contact-pill flex items-center gap-2 text-sm text-charcoal hover:text-gold transition-colors justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold flex-shrink-0" fill="none"
               viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
-            <span class="break-all">danielagarcia2307@gmail.com</span>
+            <span class="break-all">danieladepablos@outlook.es</span>
           </a>
         </div>
       </div>
@@ -826,14 +910,13 @@
   </section>
   <footer class="py-2 px-4 text-center" style="background:#2e2926; border-top:1px solid #3a3632;">
     <p class="font-display text-[#ede6d8] tracking-[.35em] font-light mb-1" style="font-size:18px;">
-      Daniela <span style="color:#b89a6a;">y</span> Leonardo <br> GARCÍA GARCÍA
+      Daniela Depablos <span style="color:#b89a6a;">y</span> Pablo Carrillo <br> Carrillo
     </p>
   </footer>
   <audio id="bg-music" preload="metadata" playsinline loop>
     <source src="audio/paulyudin-wedding-485932.mp3" type="audio/mpeg" />
   </audio>
-  <button type="button" id="bg-music-fab" aria-pressed="false" aria-label="Reproducir música de fondo"
-    title="Música">
+  <button type="button" id="bg-music-fab" aria-pressed="false" aria-label="Reproducir música de fondo" title="Música">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d="M8 5v14l11-7L8 5z" />
     </svg>
