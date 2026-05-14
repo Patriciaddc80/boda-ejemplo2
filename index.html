@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniela & Leonardo 💍 · 12.09.2026</title>
+
+  <meta name="description"
+    content="Con muchísima ilusión, Daniela y Leonardo te invitan a celebrar el comienzo de su historia para siempre. 12.09.2026 · Confirma tu asistencia." />
+  <!-- Open Graph - Vista previa al compartir enlace -->
+
+  <script src="data-bridge.js"></script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@100;300;400&family=Tenor+Sans&display=swap"
+    rel="stylesheet" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: 'rgba(255, 255, 255, 0.75)',
+            'cream-mid': '#d1d5db',
+            gold: '#b89a6a',
+            'gold-dark': '#8a6f44',
+            charcoal: '#3a3632',
+            muted: '#8a8480',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Tenor Sans"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    /* ─── Reset ─── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Tenor Sans", sans-serif;
+      background: rgba(255, 255, 255, 0.75);
+      color: #3a3632;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Hero ─── */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.75) url('img/copia-floral.jpg') left center / 105% auto no-repeat;
+    }
+
+    #hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 1.5rem 2rem;
+      max-width: min(90vw, 560px);
+      margin-left: clamp(2.25rem, 12vw, 11rem);
+      transform: translateY(clamp(-2.5rem, -3.5vh, -1.25rem));
+    }
+
+    @media (max-width: 1023px) {
+      #hero {
+        background-size: contain;
+        background-position: center center;
+      }
+
+      #hero-content {
+        margin-left: auto;
+        margin-right: 0;
+        transform: translate(-1.25rem, -2rem);
+      }
+
+      #hero-content .ornament {
+        font-size: 12px;
+      }
+
+      #hero-content .hero-kicker {
+        font-size: 8px !important;
+      }
+
+      #hero-content h1 {
+        font-size: clamp(26px, 7.5vw, 50px) !important;
+      }
+
+      #hero-content p {
+        font-size: clamp(11px, 3.2vw, 16px) !important;
+      }
+
+      #hero-content>div.inline-block {
+        margin-top: .65rem;
+      }
+
+      #hero-content>div.inline-block p {
+        font-size: 10px !important;
+        letter-spacing: .14em;
+      }
+
+      /* Apellido pequeño en móvil (la regla general de #hero-content p lo agrandaba) */
+      #hero-content p.hero-surname {
+        font-size: clamp(9px, 1.65vw, 12px) !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #hero-content h1 {
+        font-size: clamp(14px, 4.1vw, 19px) !important;
+        padding-top: 0.5rem;
+        padding-bottom: 0.2rem;
+        margin-bottom: 0.05rem !important;
+        line-height: 1.2 !important;
+      }
+
+      #hero-content p.hero-surname {
+        margin-top: -0.2rem !important;
+        margin-bottom: 1rem !important;
+      }
+    }
+
+    #countdown-section .cd-num {
+      color: #3a3632;
+    }
+
+    #countdown-section .cd-lbl {
+      color: #8a8480;
+    }
+
+    /* ─── Gold ornament ─── */
+    .gold-line {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      color: #b89a6a;
+    }
+
+    .gold-line::before,
+    .gold-line::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #b89a6a, transparent);
+    }
+
+    /* ─── Countdown ─── */
+    .cd-unit {
+      text-align: center;
+      min-width: 56px;
+    }
+
+    .cd-num {
+      display: block;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 100;
+      font-size: clamp(22px, 5vw, 36px);
+      letter-spacing: 0.02em;
+      font-variant-numeric: tabular-nums;
+      color: #ede6d8;
+      line-height: 1.1;
+    }
+
+    .cd-lbl {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 11px;
+      letter-spacing: .14em;
+      color: #c4b8a4;
+      margin-top: 6px;
+    }
+
+    /* ─── Section helpers ─── */
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 300;
+      letter-spacing: .04em;
+      line-height: 1.15;
+    }
+
+    .section-eyebrow {
+      font-family: "Tenor Sans", sans-serif;
+      font-size: 10px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #8a8480;
+    }
+
+    /* ─── Info cards ─── */
+    .info-card {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid #d1d5db;
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+      transition: box-shadow .25s;
+    }
+
+    .info-card:hover {
+      box-shadow: 0 8px 32px rgba(184, 154, 106, .12);
+    }
+
+    .info-card h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 300;
+      font-size: clamp(22px, 4.5vw, 28px);
+      text-align: center;
+      color: #3a3632;
+      line-height: 1.2;
+    }
+
+    .contact-pill {
+      border: 1px solid #d8ccb9;
+      background: transparent;
+      border-radius: 999px;
+      padding: .48rem .9rem;
+    }
+
+    /* ─── Buttons ─── */
+    .btn-gold {
+      display: inline-block;
+      font-family: "Tenor Sans", sans-serif;
+      font-size: 10.5px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      background: #b89a6a;
+      color: #fff;
+      padding: .78rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      transition: background .25s, transform .15s;
+      text-decoration: none;
+    }
+
+    .btn-gold:hover {
+      background: #8a6f44;
+      transform: translateY(-1px);
+    }
+
+    /* ─── RSVP ─── */
+    #rsvp {
+      position: relative;
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    /* ─── Form ─── */
+    .form-input {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      background: transparent;
+      padding: .65rem .2rem;
+      font-family: "Tenor Sans", sans-serif;
+      font-size: 13px;
+      color: #3a3632;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-input:focus {
+      border-color: #b89a6a;
+    }
+
+    .form-input::placeholder {
+      color: #b0a898;
+    }
+
+    .form-label {
+      display: block;
+      font-family: "Tenor Sans", sans-serif;
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: #6b6460;
+      margin-bottom: .4rem;
+      text-transform: uppercase;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1.75rem;
+      align-items: center;
+      margin-top: .5rem;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      accent-color: #b89a6a;
+      width: 15px;
+      height: 15px;
+    }
+
+    .form-select {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      background: transparent;
+      padding: .65rem .2rem;
+      font-family: "Tenor Sans", sans-serif;
+      font-size: 13px;
+      color: #3a3632;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .form-textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      background: rgba(255, 255, 255, .55);
+      padding: .65rem .75rem;
+      font-family: "Tenor Sans", sans-serif;
+      font-size: 13px;
+      color: #3a3632;
+      outline: none;
+      resize: vertical;
+      min-height: 80px;
+      transition: border-color .2s;
+    }
+
+    .form-textarea:focus {
+      border-color: #b89a6a;
+    }
+
+    /* ─── Conditional fields ─── */
+    .cond-group {
+      overflow: hidden;
+      transition: max-height .38s ease, opacity .38s ease;
+    }
+
+    .cond-group.hidden {
+      max-height: 0;
+      opacity: 0;
+    }
+
+    .cond-group.visible {
+      max-height: 3200px;
+      opacity: 1;
+    }
+
+    /* ─── Dress badge ─── */
+    .dress-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border: 1px solid #b89a6a;
+      padding: .5rem 1.25rem;
+      font-family: "Tenor Sans", sans-serif;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #3a3632;
+    }
+
+    /* ─── Scroll fade ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Toast ─── */
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(90px);
+      background: #b89a6a;
+      color: #fff;
+      padding: .8rem 2.2rem;
+      font-family: "Tenor Sans", sans-serif;
+      font-size: 12px;
+      letter-spacing: .1em;
+      opacity: 0;
+      transition: all .4s ease;
+      z-index: 9999;
+      white-space: nowrap;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ─── Música de fondo (FAB) ─── */
+    #bg-music-fab {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1rem;
+      z-index: 9998;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 9999px;
+      border: 1px solid #b89a6a;
+      background: rgba(255, 255, 255, 0.92);
+      color: #3a3632;
+      box-shadow: 0 4px 20px rgba(58, 54, 50, 0.12);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .25s ease, color .25s ease, transform .2s ease, border-color .25s ease;
+    }
+
+    #bg-music-fab:hover {
+      background: #b89a6a;
+      color: #fff;
+      border-color: #8a6f44;
+    }
+
+    #bg-music-fab:active {
+      transform: scale(0.96);
+    }
+
+    #bg-music-fab:focus-visible {
+      outline: 2px solid #b89a6a;
+      outline-offset: 3px;
+    }
+
+    #bg-music-fab svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    @media (max-width: 640px) {
+      #bg-music-fab {
+        bottom: 5rem;
+      }
+    }
+
+    /* ─── Ornament ─── */
+    .ornament {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      color: #b89a6a;
+      font-size: 14px;
+    }
+
+    .ornament::before,
+    .ornament::after {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: #b89a6a;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="hero">
+    <div id="hero-content">
+      <div class="ornament hero-kicker mb-7 text-[11px] tracking-[.10em] uppercase text-gold">
+        Nos casamos
+      </div>
+      <h1 class="font-display font-light text-charcoal leading-[1.05] tracking-widest mb-2 py-5"
+        style="font-size: clamp(26px, 7vw, 58px);">
+        DANIELA
+      </h1>
+      <p class="hero-surname font-display font-light text-charcoal tracking-[.12em] uppercase mb-6 -mt-1"
+        style="font-size: clamp(11px, 1.4vw, 16px);">
+        GARCÍA GARCÍA
+      </p>
+      <p class="font-display font-light text-gold tracking-[.45em] mb-2" style="font-size: clamp(13px, 2.5vw, 22px);">
+        LEONARDO
+      </p>
+      <h1 class="font-display font-light text-charcoal leading-[1.05] tracking-widest mb-2 py-5"
+        style="font-size: clamp(32px, 8.8vw, 78px);">
+        GARCÍA GARCÍA
+      </h1>
+      <p class="hero-surname font-display font-light text-charcoal tracking-[.12em] uppercase mb-6 -mt-1"
+        style="font-size: clamp(11px, 1.4vw, 16px);">
+        GARCÍA GARCÍA
+      </p>
+      <div class="inline-block w-fit max-w-full border border-gold mb-0 mt-4 px-2 py-1.5">
+        <p class="font-sans tracking-[.18em] text-[11px] uppercase text-charcoal whitespace-nowrap">
+          12 · 09 · 2026 &nbsp;·&nbsp; 19:00 h.
+        </p>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-20 pointer-events-none"
+      style="background:linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.75));"></div>
+  </section>
+  <section id="countdown-section" class="py-6 md:py-10 px-4 text-center fade-up"
+    style="background:rgba(255, 255, 255, 0.75);" aria-label="Cuenta regresiva">
+    <div id="countdown" class="flex items-start justify-center gap-7 md:gap-12 max-w-2xl mx-auto">
+      <div class="cd-unit"><span class="cd-num" id="cd-days">—</span><span class="cd-lbl">Días</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-hours">—</span><span class="cd-lbl">Horas</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-minutes">—</span><span class="cd-lbl">Minutos</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-seconds">—</span><span class="cd-lbl">Segundos</span></div>
+    </div>
+  </section>
+  <section class="py-20 md:py-28 px-4 text-center fade-up">
+
+    <h2 class="section-title text-charcoal mb-4" style="font-size: clamp(26px, 5.5vw, 42px);">
+      Nos casamos, y queremos<br />celebrarlo con vosotros
+    </h2>
+    <p class="font-display italic text-muted max-w-lg mx-auto" style="font-size:16px; line-height:1.65;">
+      Nuestro gran día será aún mejor si contamos con vuestra presencia
+    </p>
+  </section>
+  <section id="ceremonia" class="pb-16 md:pb-24 px-4 fade-up">
+    <div class="max-w-2xl mx-auto">
+      <div class="info-card text-center">
+        <p class="section-eyebrow">Ceremonia Civil</p>
+        <div class="gold-line w-16 my-3"></div>
+        <h2 style="font-size: clamp(26px, 5.5vw, 36px);">
+          12 de Septiembre<br />de 2026
+        </h2>
+        <p class="font-sans text-gold tracking-widest text-sm mt-2">19:00 h.</p>
+        <div class="gold-line w-16 my-4"></div>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mt-2 w-full">
+          <div class="text-center">
+            <div class="w-20 h-20 flex items-center justify-center mx-auto mb-2">
+              <img src="img/anillo.png" alt="" class="h-16 w-16 object-contain" />
+            </div>
+            <p class="section-eyebrow">Tipo</p>
+            <p class="font-display italic text-charcoal text-base mt-1">Civil</p>
+          </div>
+          <div class="w-px h-10 bg-cream-mid hidden sm:block"></div>
+          <div class="text-center">
+            <div class="w-20 h-20 flex items-center justify-center mx-auto mb-2">
+              <img src="img/calendar-1.gif" alt="" class="h-14 w-14 object-contain" />
+            </div>
+            <p class="section-eyebrow">Hora</p>
+            <p class="font-display italic text-charcoal text-base mt-1">19:00 h.</p>
+          </div>
+          <div class="w-px h-10 bg-cream-mid hidden sm:block"></div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="lugar" class="pb-0" style="background:rgba(255, 255, 255, 0.75);">
+    <div class="max-w-5xl mx-auto px-4 py-6 md:py-20">
+      <div class="max-w-xl mx-auto fade-up text-center">
+        <img src="img/copas-fiesta-1.gif" alt="" class="h-12 w-12 mx-auto mb-3 object-contain opacity-90" />
+        <p class="section-eyebrow mb-3">Lugar de celebración</p>
+        <h2 class="section-title text-charcoal mb-4" style="font-size: clamp(24px, 4.5vw, 34px);">
+          La Caminera<br />Club de Campo
+        </h2>
+        <div class="flex flex-col items-center gap-3 mb-6">
+          <p class="font-sans text-charcoal text-sm leading-relaxed text-center">
+            Calle Vega, s/n<br />
+            13740 Torrenueva, Ciudad Real
+          </p>
+        </div>
+        <a href="https://maps.google.com/?q=La+Caminera+Club+de+Campo+Torrenueva+Ciudad+Real" target="_blank"
+          rel="noopener" class="btn-gold">Cómo llegar</a>
+      </div>
+      <div class="mt-14 fade-up">
+        <iframe title="La Caminera Club de Campo" width="100%" height="300"
+          style="border:none; filter:grayscale(.15) contrast(.95); display:block;" loading="lazy"
+          src="https://maps.google.com/maps?q=La+Caminera+Club+de+Campo+Torrenueva+Ciudad+Real&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </section>
+  <section id="dresscode" class="py-8 md:py-24 px-4 text-center fade-up">
+    <p class="section-eyebrow mb-5">Código de vestimenta</p>
+    <div class="dress-badge mx-auto w-fit mb-8 gap-2">
+      <img src="img/dress-code-1.gif" alt="" class="h-7 w-7 object-contain flex-shrink-0" />
+      A tu gusto, cómodo y con ganas de disfrutar de nuestra celebración
+    </div>
+    <p class="font-display italic text-muted max-w-sm mx-auto" style="font-size:16px; line-height:1.65;">
+      ¡Queremos que brilléis tanto como nosotros!
+    </p>
+  </section>
+  <section id="rsvp" class="py-8 md:py-24 px-4">
+    <div class="max-w-lg mx-auto">
+      <div class="text-center mb-10 fade-up">
+        <img src="img/rsvp.gif" alt="" class="h-16 w-auto mx-auto mb-3 object-contain opacity-90" />
+        <h2 class="section-title text-charcoal" style="font-size: clamp(26px, 5vw, 38px);">RSVP</h2>
+      </div>
+      <div class="fade-up px-6 py-10 md:px-10 md:py-12"
+        style="background:rgba(255,255,255,.75); backdrop-filter:blur(4px);">
+        <p class="text-sm text-muted text-center mb-8 font-display italic" style="font-size:15px;">
+          CONFÍRMANOS TU ASISTENCIA
+        </p>
+        <form id="rsvp-form" novalidate class="relative flex flex-col gap-7">
+          <div class="absolute w-px h-px p-0 -m-px overflow-hidden border-0" style="left:-10000px;top:auto;"
+            aria-hidden="true">
+            <label for="rsvp-hp">Dejar vacío</label>
+            <input type="text" id="rsvp-hp" name="company" tabindex="-1" autocomplete="off" />
+          </div>
+          <div>
+            <label class="form-label" for="nombre">Nombre y apellidos</label>
+            <input id="nombre" name="nombre" type="text" class="form-input" placeholder="Tu nombre completo" required />
+          </div>
+          <div>
+            <label class="form-label" for="email">Correo electrónico</label>
+            <input id="email" name="email" type="email" class="form-input" placeholder="correo@ejemplo.com" required />
+          </div>
+          <div>
+            <label class="form-label" for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" class="form-input" placeholder="+34 600 000 000" />
+          </div>
+          <div>
+            <span class="form-label text-center">¿Confirmas tu asistencia?</span>
+            <div class="radio-group justify-center">
+              <label><input type="radio" name="asistencia" value="si" id="asiste-si" />Sí, estaré allí</label>
+              <label><input type="radio" name="asistencia" value="no" id="asiste-no" />No podré ir</label>
+            </div>
+          </div>
+          <div id="datos-grupo" class="cond-group hidden flex flex-col gap-7">
+            <div>
+              <label class="form-label text-center md:text-left" for="acompanantes">¿Cuántos acompañantes?</label>
+              <p class="text-sm text-muted text-center mb-2 font-display italic" style="font-size:12px;">
+                Si no tienes acompañantes, selecciona "Solo yo (0 acompañantes)", de lo contrario, selecciona el número
+                de acompañantes y completa el formulario con el nombre y apellidos de cada uno.
+                <br>
+
+              </p>
+              <select id="acompanantes" name="acompanantes" class="form-select">
+                <option value="0">Solo yo (0 acompañantes)</option>
+                <option value="1">1 acompañante</option>
+                <option value="2">2 acompañantes</option>
+                <option value="3">3 acompañantes</option>
+                <option value="4">4 acompañantes</option>
+                <option value="5">5 acompañantes</option>
+                <option value="6">6 acompañantes</option>
+                <option value="7">7 acompañantes</option>
+                <option value="8">8 acompañantes</option>
+                <option value="9">9 acompañantes</option>
+                <option value="10">10 acompañantes</option>
+              </select>
+            </div>
+            <div id="acompanantes-nombres" class="cond-group hidden flex flex-col gap-5">
+              <p class="form-label text-center">Nombre y apellidos de cada acompañante</p>
+              <div data-acomp-slot="1" class="hidden flex flex-col gap-1">
+                <label class="form-label" for="acomp-1">Acompañante 1</label>
+                <input id="acomp-1" type="text" class="form-input" maxlength="200"
+                  placeholder="Nombre y apellidos completos" autocomplete="name" />
+              </div>
+              <div data-acomp-slot="2" class="hidden flex flex-col gap-1">
+                <label class="form-label" for="acomp-2">Acompañante 2</label>
+                <input id="acomp-2" type="text" class="form-input" maxlength="200"
+                  placeholder="Nombre y apellidos completos" autocomplete="name" />
+              </div>
+              <div data-acomp-slot="3" class="hidden flex flex-col gap-1">
+                <label class="form-label" for="acomp-3">Acompañante 3</label>
+                <input id="acomp-3" type="text" class="form-input" maxlength="200"
+                  placeholder="Nombre y apellidos completos" autocomplete="name" />
+              </div>
+              <div data-acomp-slot="4" class="hidden flex flex-col gap-1">
+                <label class="form-label" for="acomp-4">Acompañante 4</label>
+                <input id="acomp-4" type="text" class="form-input" maxlength="200"
+                  placeholder="Nombre y apellidos completos" autocomplete="name" />
+              </div>
+              <div data-acomp-slot="5" class="hidden flex flex-col gap-1">
+                <label class="form-label" for="acomp-5">Acompañante 5</label>
+                <input id="acomp-5" type="text" class="form-input" maxlength="200"
+                  placeholder="Nombre y apellidos completos" autocomplete="name" />
+              </div>
+              <div data-acomp-slot="6" class="hidden flex flex-col gap-1">
+                <label class="form-label" for="acomp-6">Acompañante 6</label>
+                <input id="acomp-6" type="text" class="form-input" maxlength="200"
+                  placeholder="Nombre y apellidos completos" autocomplete="name" />
+              </div>
+              <div data-acomp-slot="7" class="hidden flex flex-col gap-1">
+                <label class="form-label" for="acomp-7">Acompañante 7</label>
+                <input id="acomp-7" type="text" class="form-input" maxlength="200"
+                  placeholder="Nombre y apellidos completos" autocomplete="name" />
+              </div>
+              <div data-acomp-slot="8" class="hidden flex flex-col gap-1">
+                <label class="form-label" for="acomp-8">Acompañante 8</label>
+                <input id="acomp-8" type="text" class="form-input" maxlength="200"
+                  placeholder="Nombre y apellidos completos" autocomplete="name" />
+              </div>
+              <div data-acomp-slot="9" class="hidden flex flex-col gap-1">
+                <label class="form-label" for="acomp-9">Acompañante 9</label>
+                <input id="acomp-9" type="text" class="form-input" maxlength="200"
+                  placeholder="Nombre y apellidos completos" autocomplete="name" />
+              </div>
+              <div data-acomp-slot="10" class="hidden flex flex-col gap-1">
+                <label class="form-label" for="acomp-10">Acompañante 10</label>
+                <input id="acomp-10" type="text" class="form-input" maxlength="200"
+                  placeholder="Nombre y apellidos completos" autocomplete="name" />
+              </div>
+            </div>
+            <div>
+              <span class="form-label">¿Tienes alergias o intolerancias?</span>
+              <div class="radio-group">
+                <label><input type="radio" name="alergia" value="si" id="alergia-si" />Sí</label>
+                <label><input type="radio" name="alergia" value="no" id="alergia-no" />No</label>
+              </div>
+            </div>
+            <div id="alergias-grupo" class="cond-group hidden flex flex-col gap-1">
+              <label class="form-label" for="alergias-detalle">Detalle de tus alergias o intolerancias</label>
+              <textarea id="alergias-detalle" name="alergias" class="form-textarea" rows="3"
+                placeholder="Describe alergias o intolerancias (alimentarias, medicamentosas, etc.)"></textarea>
+            </div>
+            <div id="acomp-alergia-bloque" class="hidden">
+              <span class="form-label">¿Tiene alguno de tus acompañantes alergias o intolerancias?</span>
+              <div class="radio-group">
+                <label><input type="radio" name="acomp-alergia" value="si" id="acomp-alergia-si" />Sí</label>
+                <label><input type="radio" name="acomp-alergia" value="no" id="acomp-alergia-no" />No</label>
+              </div>
+            </div>
+            <div id="acomp-alergias-grupo" class="cond-group hidden flex flex-col gap-1">
+              <label class="form-label" for="acomp-alergias-detalle"> Detalle de alergias o intolerancias de alguno de
+                tus acompañantes</label>
+              <textarea id="acomp-alergias-detalle" name="acomp_alergias" class="form-textarea" rows="3"
+                placeholder="Indica qué acompañante(s) tiene alergias o intolerancias y el detalle de las mismas"></textarea>
+            </div>
+            <div>
+              <span class="form-label">¿Necesitas servicio de transporte?</span>
+              <div class="radio-group">
+                <label><input type="radio" name="transporte" value="si" id="transporte-si" />Sí</label>
+                <label><input type="radio" name="transporte" value="no" id="transporte-no" />No</label>
+              </div>
+            </div>
+            <div id="transporte-grupo" class="cond-group hidden flex flex-col gap-1">
+              <label class="form-label" for="transporte-detalle">Información de recogida / transporte</label>
+              <textarea id="transporte-detalle" name="transporte_detalle" class="form-textarea" rows="3"
+                placeholder="Dirección, hotel o punto de preferencia para la recogida"></textarea>
+            </div>
+          </div>
+          <div class="pt-1">
+            <button type="submit" id="rsvp-btn" class="btn-gold w-full text-center">
+              Confirmar vueestra asistencia
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section id="contacto" class="py-8 md:py-24 px-4 fade-up" style="background:rgba(255, 255, 255, 0.75);">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="section-eyebrow mb-4">¿Tenéis alguna duda? <br> Podéis enviarnos vuestros datos o preguntas tanto a
+        nuestros
+        WhatsApp como
+        a nuestros correos electrónicos</p>
+      <h2 class="section-title text-charcoal mb-10" style="font-size: clamp(22px, 4vw, 32px);">
+        Estaremos aquí con vosotros
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="info-card text-center">
+          <p class="section-eyebrow mb-1">Novio</p>
+          <h3 class="font-display font-light text-charcoal mb-4" style="font-size:20px;">
+            Leonardo<br />GARCÍA GARCÍA
+          </h3>
+          <a href="tel:+34676778204"
+            class="contact-pill flex items-center gap-2 text-sm text-charcoal hover:text-gold transition-colors justify-center mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold flex-shrink-0" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            676 778 204
+          </a>
+          <a href="mailto:sebas100394@gmail.com"
+            class="contact-pill flex items-center gap-2 text-sm text-charcoal hover:text-gold transition-colors justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold flex-shrink-0" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            <span class="break-all">sebas100394@gmail.com</span>
+          </a>
+        </div>
+        <div class="info-card text-center">
+          <p class="section-eyebrow mb-1">Novia</p>
+          <h3 class="font-display font-light text-charcoal mb-4" style="font-size:20px;">
+            Daniela<br />GARCÍA GARCÍA
+          </h3>
+          <a href="tel:+34679264784"
+            class="contact-pill flex items-center gap-2 text-sm text-charcoal hover:text-gold transition-colors justify-center mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold flex-shrink-0" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            679 264 784
+          </a>
+          <a href="mailto:danielagarcia2307@gmail.com"
+            class="contact-pill flex items-center gap-2 text-sm text-charcoal hover:text-gold transition-colors justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold flex-shrink-0" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+            </svg>
+            <span class="break-all">danielagarcia2307@gmail.com</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-5 md:py-8 px-4 text-center fade-up" style="background:#f8f3ef;">
+    <p class="section-eyebrow mb-6" style="color:#462a1c;">El comienzo de nuestra historia</p>
+  </section>
+  <footer class="py-2 px-4 text-center" style="background:#2e2926; border-top:1px solid #3a3632;">
+    <p class="font-display text-[#ede6d8] tracking-[.35em] font-light mb-1" style="font-size:18px;">
+      Daniela <span style="color:#b89a6a;">y</span> Leonardo <br> GARCÍA GARCÍA
+    </p>
+  </footer>
+  <audio id="bg-music" preload="metadata" playsinline loop>
+    <source src="audio/paulyudin-wedding-485932.mp3" type="audio/mpeg" />
+  </audio>
+  <button type="button" id="bg-music-fab" aria-pressed="false" aria-label="Reproducir música de fondo"
+    title="Música">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M8 5v14l11-7L8 5z" />
+    </svg>
+  </button>
+  <div id="toast" role="status" aria-live="polite">✓ ¡Gracias! Hemos recibido viestra confirmación.</div>
+  <script>window.WHATSAPP_TO_LIST = ['34679264784', '34676778204'];</script>
+  <script>
+    (function () {
+      const target = new Date('2026-09-12T19:00:00+02:00');
+      const el = {
+        days: document.getElementById('cd-days'),
+        hours: document.getElementById('cd-hours'),
+        minutes: document.getElementById('cd-minutes'),
+        seconds: document.getElementById('cd-seconds'),
+      };
+      const pad = n => String(n).padStart(2, '0');
+      function tick() {
+        const diff = target - new Date();
+        if (diff <= 0) {
+          Object.values(el).forEach(e => e.textContent = '0');
+          return;
+        }
+        const s = Math.floor(diff / 1000);
+        el.days.textContent = Math.floor(s / 86400);
+        el.hours.textContent = pad(Math.floor((s % 86400) / 3600));
+        el.minutes.textContent = pad(Math.floor((s % 3600) / 60));
+        el.seconds.textContent = pad(s % 60);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+    function toggleCond(id, show) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('hidden', !show);
+      el.classList.toggle('visible', show);
+    }
+    function updateAcompanantesNombres() {
+      const sel = document.getElementById('acompanantes');
+      const n = Math.min(10, Math.max(0, parseInt((sel && sel.value) || '0', 10) || 0));
+      if (!document.getElementById('acompanantes-nombres')) return;
+      toggleCond('acompanantes-nombres', n > 0);
+      toggleCond('acomp-alergia-bloque', n > 0);
+      if (n <= 0) {
+        document.querySelectorAll('[name="acomp-alergia"]').forEach(r => { r.checked = false; });
+        const acompAlergiasDetalle = document.getElementById('acomp-alergias-detalle');
+        if (acompAlergiasDetalle) acompAlergiasDetalle.value = '';
+      }
+      syncAcompAlergiasGrupo();
+      for (let i = 1; i <= 10; i++) {
+        const slot = document.querySelector('[data-acomp-slot="' + i + '"]');
+        const input = document.getElementById('acomp-' + i);
+        if (!slot) continue;
+        const show = i <= n;
+        slot.classList.toggle('hidden', !show);
+        if (input) {
+          input.required = show;
+          if (!show) input.value = '';
+        }
+      }
+    }
+    document.querySelectorAll('[name="asistencia"]').forEach(r =>
+      r.addEventListener('change', () => {
+        toggleCond('datos-grupo', r.value === 'si' && r.checked);
+        updateAcompanantesNombres();
+      })
+    );
+    function syncAlergiasGrupo() {
+      const t = document.querySelector('[name="alergia"]:checked');
+      const show = t && t.value === 'si';
+      toggleCond('alergias-grupo', show);
+      if (!show) {
+        const el = document.getElementById('alergias-detalle');
+        if (el) el.value = '';
+      }
+    }
+    document.querySelectorAll('[name="alergia"]').forEach(r =>
+      r.addEventListener('change', syncAlergiasGrupo)
+    );
+    function syncAcompAlergiasGrupo() {
+      const sel = document.getElementById('acompanantes');
+      const n = Math.min(10, Math.max(0, parseInt((sel && sel.value) || '0', 10) || 0));
+      const t = document.querySelector('[name="acomp-alergia"]:checked');
+      const show = n > 0 && t && t.value === 'si';
+      toggleCond('acomp-alergias-grupo', show);
+      if (!show) {
+        const el = document.getElementById('acomp-alergias-detalle');
+        if (el) el.value = '';
+      }
+    }
+    document.querySelectorAll('[name="acomp-alergia"]').forEach(r =>
+      r.addEventListener('change', syncAcompAlergiasGrupo)
+    );
+    function syncTransporteGrupo() {
+      const t = document.querySelector('[name="transporte"]:checked');
+      const show = t && t.value === 'si';
+      toggleCond('transporte-grupo', show);
+      if (!show) {
+        const el = document.getElementById('transporte-detalle');
+        if (el) el.value = '';
+      }
+    }
+    document.querySelectorAll('[name="transporte"]').forEach(r =>
+      r.addEventListener('change', syncTransporteGrupo)
+    );
+    const acSelect = document.getElementById('acompanantes');
+    if (acSelect) {
+      acSelect.addEventListener('change', updateAcompanantesNombres);
+    }
+    var RSVP_LS_KEY = window.YJ_RSVP_KEY || 'yj_rsvp_log';
+    function rsvpRowsFromRec(rec) {
+      var t = rec.created_at;
+      var rows = [{
+        created_at: t,
+        envio_id: t,
+        tipo_persona: 'invitado',
+        invitado_principal: rec.nombre,
+        nombre: rec.nombre,
+        email: rec.email,
+        telefono: rec.telefono,
+        asistencia: rec.asistencia,
+        num_acompanantes: rec.num_acompanantes,
+        nombres_acompanantes: null,
+        transporte: rec.transporte,
+        transporte_detalle: rec.transporte_detalle,
+        alergia: rec.alergia,
+        alergias_detalle: rec.alergias_detalle,
+      }];
+      if (rec.asistencia === 'si' && rec.nombres_acompanantes && rec.nombres_acompanantes.length) {
+        for (var i = 0; i < rec.nombres_acompanantes.length; i++) {
+          rows.push({
+            created_at: t,
+            envio_id: t,
+            tipo_persona: 'acompanante',
+            invitado_principal: rec.nombre,
+            nombre: rec.nombres_acompanantes[i],
+            email: rec.email,
+            telefono: rec.telefono,
+            asistencia: 'si',
+            num_acompanantes: null,
+            nombres_acompanantes: null,
+            transporte: rec.transporte,
+            transporte_detalle: rec.transporte_detalle,
+            alergia: rec.acompanantes_alergia || null,
+            alergias_detalle: rec.acompanantes_alergias_detalle || null,
+          });
+        }
+      }
+      return rows;
+    }
+    function rsvpAppendLocalRows(list) {
+      try {
+        var raw = localStorage.getItem(RSVP_LS_KEY);
+        var arr = raw ? JSON.parse(raw) : [];
+        for (var j = 0; j < list.length; j++) arr.push(list[j]);
+        localStorage.setItem(RSVP_LS_KEY, JSON.stringify(arr));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    function rsvpToWhatsAppLines(rec) {
+      var lineas = [
+        'Confirmación de asistencia',
+        '',
+        'Nombre: ' + rec.nombre,
+        'Email: ' + rec.email,
+        'Teléfono: ' + (rec.telefono || '—'),
+        'Asistencia: ' + (rec.asistencia === 'si' ? 'Sí' : 'No'),
+      ];
+      if (rec.asistencia === 'si') {
+        lineas.push('Acompañantes: ' + String(rec.num_acompanantes != null ? rec.num_acompanantes : '0'));
+        if (rec.nombres_acompanantes && rec.nombres_acompanantes.length) {
+          for (var i = 0; i < rec.nombres_acompanantes.length; i++) {
+            lineas.push('Acompañante ' + (i + 1) + ': ' + rec.nombres_acompanantes[i]);
+          }
+        }
+        lineas.push('Alergias (sí/no): ' + (rec.alergia || '—'));
+        if (rec.alergias_detalle) {
+          lineas.push('Detalle alergias o intolerancias: ' + rec.alergias_detalle);
+        }
+        if (rec.num_acompanantes > 0) {
+          lineas.push('Alergias acompañantes (sí/no): ' + (rec.acompanantes_alergia || '—'));
+          if (rec.acompanantes_alergias_detalle) {
+            lineas.push('Detalle alergias acompañantes: ' + rec.acompanantes_alergias_detalle);
+          }
+        }
+        lineas.push('Transporte (sí/no): ' + (rec.transporte || '—'));
+        if (rec.transporte === 'si' && rec.transporte_detalle) {
+          lineas.push('Recogida / transporte: ' + rec.transporte_detalle);
+        }
+      }
+      return lineas;
+    }
+    document.getElementById('rsvp-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const asiste = document.querySelector('[name="asistencia"]:checked');
+      if (!nombre || !email || !asiste) {
+        alert('Por favor, rellena tu nombre, email y confirmación de asistencia.');
+        return;
+      }
+      const nAcomp = Math.min(10, Math.max(0, parseInt(
+        (document.getElementById('acompanantes') && document.getElementById('acompanantes').value) || '0',
+        10,
+      ) || 0));
+      const acompanantes_nombres = [];
+      if (asiste.value === 'si' && nAcomp > 0) {
+        for (let i = 1; i <= nAcomp; i++) {
+          const inp = document.getElementById('acomp-' + i);
+          const t = (inp && inp.value.trim()) || '';
+          if (!t) {
+            alert('Indica el nombre y apellidos de cada acompañante (acompañante ' + i + ').');
+            return;
+          }
+          acompanantes_nombres.push(t);
+        }
+      }
+      const honeypot = (document.getElementById('rsvp-hp') && document.getElementById('rsvp-hp').value) || '';
+      if (honeypot.trim() !== '') {
+        alert('Solicitud rechazada.');
+        return;
+      }
+      const telefono = (document.getElementById('telefono') && document.getElementById('telefono').value.trim()) || '';
+      const acompanantes = (document.getElementById('acompanantes') && document.getElementById('acompanantes').value) || '0';
+      const transporte = document.querySelector('[name="transporte"]:checked') && document.querySelector('[name="transporte"]:checked').value;
+      const alergia = document.querySelector('[name="alergia"]:checked') && document.querySelector('[name="alergia"]:checked').value;
+      const alergias = (document.getElementById('alergias-detalle') && document.getElementById('alergias-detalle').value.trim()) || '';
+      const acompAlergia = document.querySelector('[name="acomp-alergia"]:checked') && document.querySelector('[name="acomp-alergia"]:checked').value;
+      const acompAlergias = (document.getElementById('acomp-alergias-detalle') && document.getElementById('acomp-alergias-detalle').value.trim()) || '';
+      const transporteInfo = (document.getElementById('transporte-detalle') && document.getElementById('transporte-detalle').value.trim()) || '';
+      if (asiste.value === 'si') {
+        if (alergia === 'si' && !alergias) {
+          alert('Por favor, indica el detalle de tus alergias o intolerancias.');
+          return;
+        }
+        if (nAcomp > 0 && acompAlergia === 'si' && !acompAlergias) {
+          alert('Por favor, indica el detalle de las alergias o intolerancias de tus acompañantes.');
+          return;
+        }
+        if (transporte === 'si' && !transporteInfo) {
+          alert('Por favor, indica la dirección, hotel o punto de recogida para el transporte.');
+          return;
+        }
+      }
+      const waList = Array.isArray(window.WHATSAPP_TO_LIST) && window.WHATSAPP_TO_LIST.length
+        ? window.WHATSAPP_TO_LIST.map(function (n) { return String(n || '').trim(); }).filter(Boolean)
+        : ['34679264784', '34676778204'];
+      const btn = document.getElementById('rsvp-btn');
+      if (btn) {
+        btn.disabled = true;
+      }
+      try {
+        const rec = {
+          created_at: new Date().toISOString(),
+          nombre: nombre,
+          email: email,
+          telefono: telefono || null,
+          asistencia: asiste.value,
+          num_acompanantes: asiste.value === 'si' ? (parseInt(acompanantes, 10) || 0) : null,
+          nombres_acompanantes: asiste.value === 'si' && acompanantes_nombres.length
+            ? acompanantes_nombres.slice()
+            : null,
+          transporte: asiste.value === 'si' ? (transporte || null) : null,
+          transporte_detalle: asiste.value === 'si' && transporte === 'si' ? (transporteInfo || null) : null,
+          alergia: asiste.value === 'si' ? (alergia || null) : null,
+          alergias_detalle: asiste.value === 'si' && alergia === 'si' ? (alergias || null) : null,
+          acompanantes_alergia: asiste.value === 'si' && nAcomp > 0 ? (acompAlergia || null) : null,
+          acompanantes_alergias_detalle: asiste.value === 'si' && nAcomp > 0 && acompAlergia === 'si'
+            ? (acompAlergias || null)
+            : null,
+        };
+        alert(
+          'Te redirigimos a WhatsApp con tu confirmación ya escrita.\n\n' +
+          'Pulsa «Aceptar» para continuar. En WhatsApp solo tendrás que pulsar «Enviar» para enviarnos los datos.',
+        );
+        var rowsToStore = rsvpRowsFromRec(rec);
+        if (!rsvpAppendLocalRows(rowsToStore)) {
+          alert('No se pudo guardar la copia en este navegador (modo privado, espacio lleno o datos bloqueados). La confirmación sigue por WhatsApp.');
+        }
+        var submitPath = typeof window.YJ_API_SUBMIT_PATH === 'string' ? window.YJ_API_SUBMIT_PATH.trim() : '';
+        if (submitPath) {
+          fetch(submitPath, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ rows: rowsToStore }),
+          }).catch(function () { });
+        }
+        const text = rsvpToWhatsAppLines(rec).join('\n');
+        var waUrls = waList.map(function (waTo) {
+          return 'https://api.whatsapp.com/send?phone=' + encodeURIComponent(waTo) + '&text=' + encodeURIComponent(text);
+        });
+        const w = window.open(waUrls[0], '_blank', 'noopener,noreferrer');
+        if (waUrls[1]) {
+          // Segundo intento en pestaña aparte para el otro número (puede bloquearlo el navegador).
+          setTimeout(function () { window.open(waUrls[1], '_blank', 'noopener,noreferrer'); }, 350);
+        }
+        if (w) {
+          const toast = document.getElementById('toast');
+          toast.classList.add('show');
+          setTimeout(function () { toast.classList.remove('show'); }, 4500);
+          this.reset();
+          toggleCond('datos-grupo', false);
+          toggleCond('alergias-grupo', false);
+          toggleCond('acomp-alergias-grupo', false);
+          toggleCond('transporte-grupo', false);
+          updateAcompanantesNombres();
+        } else {
+          window.location.assign(waUrls[0]);
+        }
+      } catch (err) {
+        console.error(err);
+        alert('No se pudo abrir WhatsApp. Revisa tu conexión o vuelve a intentarlo.');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+        }
+      }
+    });
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    (function () {
+      var audio = document.getElementById('bg-music');
+      var btn = document.getElementById('bg-music-fab');
+      if (!audio || !btn) return;
+      audio.volume = 0.35;
+      var svgPlay = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7L8 5z"/></svg>';
+      var svgPause = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+      function syncUi() {
+        var playing = !audio.paused;
+        btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+        btn.setAttribute('aria-label', playing ? 'Pausar música de fondo' : 'Reproducir música de fondo');
+        btn.innerHTML = playing ? svgPause : svgPlay;
+      }
+      syncUi();
+      btn.addEventListener('click', function () {
+        if (audio.paused) {
+          var p = audio.play();
+          if (p && typeof p.then === 'function') {
+            p.then(syncUi).catch(function () {
+              syncUi();
+              alert('No se pudo reproducir el audio. Comprobad que el archivo existe (audio/paulyudin-wedding-485932.mp3) y que el navegador lo permite.');
+            });
+          } else {
+            syncUi();
+          }
+        } else {
+          audio.pause();
+          syncUi();
+        }
+      });
+      audio.addEventListener('play', syncUi);
+      audio.addEventListener('pause', syncUi);
+    })();
+  </script>
+</body>
+
+</html>

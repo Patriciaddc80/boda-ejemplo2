@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSVP — Panel · Daniela & Leonardo</title>
+  <script src="data-bridge.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream: #f9f5ef;
+      --cream2: #ede4d4;
+      --gold: #b89a6a;
+      --gold-dk: #8c7044;
+      --gold-lt: #f0e4cc;
+      --ink: #2c2520;
+      --ink2: #6b5e52;
+      --ink3: #9c8e84;
+      --white: #ffffff;
+      --green: #3d7a5c;
+      --green-lt: #d4ede2;
+      --blue: #4a72a8;
+      --blue-lt: #dae6f5;
+      --amber: #c07c30;
+      --amber-lt: #fdecd6;
+      --red: #a34f4f;
+      --red-lt: #f5dada;
+      --shadow: 0 2px 12px rgba(44, 37, 32, .07);
+      --shadow-md: 0 4px 20px rgba(44, 37, 32, .11);
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ══ HEADER ════════════════════════════════════════════════════════════ */
+    .header {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 2.25rem 1.5rem 1rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(-45deg, transparent, transparent 38px,
+          rgba(184, 154, 106, .05) 38px, rgba(184, 154, 106, .05) 39px);
+      pointer-events: none;
+    }
+
+    .header__eyebrow {
+      font-size: .68rem;
+      font-weight: 400;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .55rem;
+    }
+
+    .header__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 2.3rem;
+      letter-spacing: .04em;
+      line-height: 1.1;
+    }
+
+    .header__title em {
+      font-style: italic;
+      color: var(--gold-lt);
+    }
+
+    .header__date {
+      font-size: .72rem;
+      font-weight: 300;
+      letter-spacing: .14em;
+      color: var(--ink3);
+      margin-top: .4rem;
+    }
+
+    /* ══ MAIN ═══════════════════════════════════════════════════════════════ */
+    .main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 1.2rem .85rem 2.5rem;
+    }
+
+    /* ══ STAT CARDS ══════════════════════════════════════════════════════════ */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: .7rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: .45rem .35rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--cream2);
+      transition: transform .15s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .stat-card--gold {
+      border-color: var(--gold);
+    }
+
+    .stat-card--green {
+      border-color: var(--green);
+    }
+
+    .stat-card--red {
+      border-color: var(--red);
+    }
+
+    .stat-card__num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .stat-card--gold .stat-card__num {
+      color: var(--gold-dk);
+    }
+
+    .stat-card--green .stat-card__num {
+      color: var(--green);
+    }
+
+    .stat-card--red .stat-card__num {
+      color: var(--red);
+    }
+
+    .stat-card__label {
+      font-size: .5rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-top: .15rem;
+    }
+
+    /* ══ ORIGIN BADGE ════════════════════════════════════════════════════════ */
+    .origin-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .2rem;
+      font-size: .5rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: .12rem .35rem;
+      border-radius: 14px;
+    }
+
+    .origin-pill::before {
+      content: '';
+      display: block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .origin-pill--server {
+      background: var(--green-lt);
+      color: var(--green);
+    }
+
+    .origin-pill--local {
+      background: var(--cream2);
+      color: var(--ink2);
+    }
+
+    /* ══ TOOLBAR ═════════════════════════════════════════════════════════════ */
+    .toolbar {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+    }
+
+    .toolbar__label {
+      font-size: .64rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink3);
+      margin-bottom: .6rem;
+    }
+
+    .toolbar__row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+    }
+
+    .toolbar__sep {
+      width: 1px;
+      background: var(--cream2);
+      margin: 0 .2rem;
+      align-self: stretch;
+    }
+
+    /* ══ BUTTONS ═════════════════════════════════════════════════════════════ */
+    /*  Regla de color:
+        🔵 Azul    → conectar / estado del servidor
+        🟡 Dorado  → acción principal (actualizar)
+        ⬜ Outline → exportar / importar (secundario)
+        🟠 Ámbar   → editar / añadir (modificar datos)
+        🔴 Rojo    → eliminar / vaciar (destructivo)        */
+
+    .btn {
+      font-family: 'Jost', sans-serif;
+      font-size: .74rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      padding: .48rem .9rem;
+      border-radius: 7px;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: background .14s, border-color .14s, transform .1s;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      justify-content: center;
+    }
+
+    .btn:active {
+      transform: scale(.97);
+    }
+
+    /* Azul — servidor */
+    .btn--blue {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .btn--blue:hover {
+      background: #3a5e8e;
+      border-color: #3a5e8e;
+    }
+
+    .btn--blue-outline {
+      background: var(--blue-lt);
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .btn--blue-outline:hover {
+      background: #c5d8ef;
+    }
+
+    /* Dorado — acción primaria */
+    .btn--gold {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+    }
+
+    .btn--gold:hover {
+      background: var(--gold-dk);
+      border-color: var(--gold-dk);
+    }
+
+    /* Outline neutro — secundario */
+    .btn--outline {
+      background: transparent;
+      border-color: var(--cream2);
+      color: var(--ink2);
+    }
+
+    .btn--outline:hover {
+      background: var(--cream2);
+    }
+
+    /* Ámbar — editar / añadir */
+    .btn--amber {
+      background: var(--amber-lt);
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .btn--amber:hover {
+      background: #fbd9b5;
+    }
+
+    /* Rojo — eliminar */
+    .btn--red {
+      background: var(--red-lt);
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    .btn--red:hover {
+      background: #eec8c8;
+    }
+
+    .btn--red-solid {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+
+    .btn--red-solid:hover {
+      background: #8a3e3e;
+      border-color: #8a3e3e;
+    }
+
+    /* Mini — dentro de bloques */
+    .btn--mini {
+      font-size: .68rem;
+      padding: .28rem .65rem;
+      border-radius: 5px;
+    }
+
+    /* Servidor conectado */
+    .btn--connected {
+      background: var(--green-lt);
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .btn--connected:hover {
+      background: #bde2d1;
+    }
+
+    /* ══ LEGEND ══════════════════════════════════════════════════════════════ */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: .7rem;
+      color: var(--ink2);
+      align-items: center;
+    }
+
+    .legend__item {
+      display: flex;
+      align-items: center;
+      gap: .35rem;
+    }
+
+    .legend__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ══ GUEST BLOCKS ════════════════════════════════════════════════════════ */
+    .bloques-envio {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .bloque-envio {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border-left: 5px solid var(--gold);
+    }
+
+    .bloque-envio__header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: .9rem .9rem .65rem;
+      gap: .55rem;
+    }
+
+    .bloque-envio__nombre {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .bloque-envio__meta {
+      font-size: .71rem;
+      font-weight: 300;
+      letter-spacing: .03em;
+      color: var(--ink3);
+      margin-top: .2rem;
+    }
+
+    .bloque-envio__badges {
+      display: flex;
+      gap: .35rem;
+      flex-wrap: wrap;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    /* Status badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .22rem;
+      font-size: .64rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: .2rem .55rem;
+      border-radius: 20px;
+    }
+
+    .badge::before {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .badge--si {
+      background: var(--green-lt);
+      color: var(--green);
+    }
+
+    .badge--no {
+      background: var(--red-lt);
+      color: var(--red);
+    }
+
+    .badge--gray {
+      background: var(--cream2);
+      color: var(--ink2);
+    }
+
+    /* ── Separador visual antes de los botones ── */
+    .bloque-envio__acciones {
+      display: flex;
+      gap: .4rem;
+      flex-wrap: wrap;
+      padding: .5rem .9rem .65rem;
+      border-top: 1px solid var(--cream);
+    }
+
+    .bloque-envio__acciones-sep {
+      width: 1px;
+      background: var(--cream2);
+      margin: 0 .1rem;
+      align-self: stretch;
+      min-height: 20px;
+    }
+
+    /* ══ TABLE ═══════════════════════════════════════════════════════════════ */
+    .bloque-envio__scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      touch-action: pan-x pinch-zoom;
+      border-top: 1px solid var(--cream2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .78rem;
+      min-width: 700px;
+    }
+
+    thead th {
+      background: var(--cream);
+      font-size: .64rem;
+      font-weight: 500;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: var(--ink2);
+      padding: .55rem .75rem;
+      border-bottom: 1px solid var(--cream2);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    tbody td {
+      padding: .55rem .75rem;
+      border-bottom: 1px solid rgba(237, 228, 212, .5);
+      vertical-align: middle;
+      color: var(--ink2);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    tbody tr:hover td {
+      background: rgba(249, 245, 239, .7);
+    }
+
+    .tipo-pill {
+      display: inline-block;
+      font-size: .62rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: .14rem .42rem;
+      border-radius: 4px;
+    }
+
+    .tipo-pill--inv {
+      background: var(--gold-lt);
+      color: var(--gold-dk);
+    }
+
+    .tipo-pill--acomp {
+      background: var(--cream2);
+      color: var(--ink2);
+    }
+
+    .asist {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-weight: 500;
+    }
+
+    .asist::before {
+      content: '';
+      display: block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .asist--si::before {
+      background: var(--green);
+    }
+
+    .asist--no::before {
+      background: var(--red);
+    }
+
+    /* ══ EMPTY STATE ══════════════════════════════════════════════════════════ */
+    .empty {
+      text-align: center;
+      padding: 3.5rem 1rem;
+      color: var(--ink3);
+    }
+
+    .empty__icon {
+      font-size: 2.2rem;
+      margin-bottom: .75rem;
+      opacity: .35;
+    }
+
+    .empty__text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+    }
+
+    #file-import {
+      display: none;
+    }
+
+    .info-panel {
+      width: 100%;
+      background: #fff;
+      border-bottom: 1px solid #ede4d4;
+    }
+
+    .info-panel__inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      color: #6b5e52;
+      line-height: 1.65;
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: calc(.83rem - 2px);
+    }
+
+    .toolbar__sep {
+      display: none;
+    }
+
+    .toolbar__row .btn {
+      width: 100%;
+    }
+
+    .bloque-envio__acciones .btn {
+      width: 100%;
+    }
+
+    @media (min-width: 601px) {
+      .header__title {
+        font-size: 2.3rem;
+      }
+
+      .main {
+        padding: 1.75rem 1.25rem 3rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      }
+
+      .stat-card {
+        border-radius: 12px;
+        padding: .72rem .55rem .62rem;
+        border: 0;
+        border-top: 3px solid var(--cream2);
+      }
+
+      .stat-card--gold {
+        border-top-color: var(--gold);
+      }
+
+      .stat-card--green {
+        border-top-color: var(--green);
+      }
+
+      .stat-card--red {
+        border-top-color: var(--red);
+      }
+
+      .stat-card__num {
+        font-size: 1.85rem;
+      }
+
+      .stat-card__label {
+        font-size: .56rem;
+        letter-spacing: .1em;
+        margin-top: .2rem;
+      }
+
+      .origin-pill {
+        gap: .3rem;
+        font-size: .58rem;
+        letter-spacing: .06em;
+        padding: .16rem .44rem;
+        border-radius: 20px;
+      }
+
+      .origin-pill::before {
+        width: 5px;
+        height: 5px;
+      }
+
+      .info-panel__inner {
+        max-width: 980px;
+        font-size: .9rem;
+        padding: .95rem 1.35rem;
+      }
+
+      .toolbar__sep {
+        display: block;
+      }
+
+      .toolbar__row .btn,
+      .bloque-envio__acciones .btn {
+        width: auto;
+      }
+
+      .bloque-envio__header {
+        flex-direction: row;
+        padding: .9rem 1.1rem .65rem;
+        gap: .75rem;
+      }
+
+      .bloque-envio__acciones {
+        padding: .5rem 1.1rem .65rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="header__eyebrow">Gestión de invitados</div>
+    <h1 class="header__title"><em>Daniela</em> &amp; Leonardo</h1>
+    <p class="header__date">12 · Septiembre · 2026</p>
+  </header>
+
+  <div class="info-panel">
+    <div class="info-panel__inner">
+      <strong style="color:#2c2520;display:block;text-align:center">¿CÓMO FUNCIONA ESTE PANEL?</strong>
+      Aquí veis en tiempo real quién ha confirmado asistencia a vuestra boda, desde cualquier móvil u ordenador.
+      Cada bloque es un invitado con sus acompañantes. Podéis <strong>editar</strong> sus datos si se han equivocado,
+      <strong>añadir</strong> acompañantes que olvidaron indicar o <strong>eliminar</strong> confirmaciones duplicadas.
+      Para ver los datos actualizados en cualquier dispositivo, pulsad <strong>"CONECTAR SERVIDOR"</strong> e introducid
+      vuestra clave.
+      También podéis descargar la lista en Excel para tenerla guardada.
+    </div>
+  </div>
+
+  <main class="main">
+
+    <!-- Stats -->
+    <div class="stats-grid" id="stats"></div>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="toolbar__label">¿Qué quieres hacer?</div>
+      <div class="toolbar__row">
+        <!-- Servidor -->
+        <button type="button" class="btn btn--blue" id="btn-server">CONECTAR SERVIDOR</button>
+        <button type="button" class="btn btn--gold" id="btn-refresh">↻ Recargar lista</button>
+        <div class="toolbar__sep"></div>
+        <!-- Exportar / importar -->
+        <button type="button" class="btn btn--outline" id="btn-export-csv">↓ Descargar en Excel</button>
+        <button type="button" class="btn btn--outline" id="btn-export">↓ Guardar copia de seguridad</button>
+        <button type="button" class="btn btn--outline" id="btn-import">↑ Restaurar copia de seguridad</button>
+        <div class="toolbar__sep"></div>
+        <!-- Destructivo -->
+        <button type="button" class="btn btn--red-solid" id="btn-clear">⚠ Borrar todo (este dispositivo)</button>
+        <input type="file" id="file-import" accept="application/json,.json" />
+      </div>
+    </div>
+
+    <!-- Leyenda de botones -->
+    <div class="legend" id="legend-btns" style="display:none">
+      <strong style="font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)">Qué hace cada
+        botón:</strong>
+      <span class="legend__item"><span class="legend__dot" style="background:var(--amber)"></span> Corregir datos del
+        invitado</span>
+      <span class="legend__item"><span class="legend__dot" style="background:var(--blue)"></span> Añadir acompañante
+        olvidado</span>
+      <span class="legend__item"><span class="legend__dot" style="background:var(--red)"></span> Quitar persona o
+        confirmación</span>
+    </div>
+
+    <!-- Bloques de invitados -->
+    <div class="bloques-envio" id="bloques-envio"></div>
+
+  </main>
+
+  <script>
+    var KEY = window.YJ_RSVP_KEY || 'yj_rsvp_log';
+    var TOKEN_KEY = 'yj_panel_bearer';
+    var displayRows = [];
+    var serverMode = false;
+
+    function loadLocal() {
+      try { var raw = localStorage.getItem(KEY); return raw ? JSON.parse(raw) : []; }
+      catch (e) { return []; }
+    }
+    function save(arr) { localStorage.setItem(KEY, JSON.stringify(arr)); }
+
+    function updateServerButton() {
+      var btn = document.getElementById('btn-server');
+      if (!btn) return;
+      if (sessionStorage.getItem(TOKEN_KEY)) {
+        btn.textContent = '✓ Viendo en tiempo real';
+        btn.className = 'btn btn--connected';
+      } else {
+        btn.textContent = 'CONECTAR SERVIDOR';
+        btn.className = 'btn btn--blue';
+      }
+    }
+
+    function esc(s) {
+      if (s == null || s === '') return '';
+      var d = document.createElement('div');
+      d.textContent = String(s);
+      return d.innerHTML;
+    }
+    function fmtNames(n) {
+      if (!n || !n.length) return '—';
+      return Array.isArray(n) ? n.join('; ') : String(n);
+    }
+    function fmtWhen(iso) {
+      if (!iso) return '—';
+      var d = new Date(iso);
+      return isNaN(d.getTime()) ? iso : d.toLocaleString('es-ES', {
+        day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
+      });
+    }
+
+    function envioPaletteIndex(key) {
+      if (!key) return 0;
+      var s = String(key), h = 0;
+      for (var k = 0; k < s.length; k++) h = ((h << 5) - h + s.charCodeAt(k)) | 0;
+      return Math.abs(h);
+    }
+    function rowBgForEnvio(key) {
+      var p = [
+        '#f7f2eb', '#eef6f2', '#f3eff8', '#fdf6ea', '#e9f3fb',
+        '#f8eef2', '#eef7ed', '#f2efff', '#fff8ee', '#eaf7f7',
+        '#f5efe8', '#f0f4fa', '#f9f2e8', '#eef8f3', '#f7eef5', '#f0f7f2',
+      ];
+      return p[envioPaletteIndex(key) % p.length];
+    }
+    function bordeGrupoForEnvio(key) {
+      var b = [
+        '#b89a6a', '#6d8eb8', '#5d8f6e', '#8b6fa8', '#b86b6b',
+        '#4a8fa8', '#8b7354', '#6b5b95', '#a67c4a', '#4a9b8a',
+        '#7a5c4a', '#5a6e9e', '#9e6b5a', '#4a8a7a', '#6a8a4a', '#8a5a7a',
+      ];
+      return b[envioPaletteIndex(key) % b.length];
+    }
+
+    function csvCell(v) { var s = v == null || v === '' ? '' : String(v); return '"' + s.replace(/"/g, '""') + '"'; }
+    function rowsToCsv(rows) {
+      var hdr = ['fecha_iso', 'envio_id', 'tipo_persona', 'invitado_principal', 'nombre', 'email', 'telefono', 'asistencia_si_no', 'num_acompanantes', 'nombres_acompanantes_legacy', 'alergia_si_no', 'alergias_detalle', 'transporte_si_no', 'transporte_detalle'];
+      var lines = [hdr.map(csvCell).join(',')];
+      for (var i = 0; i < rows.length; i++) {
+        var r = rows[i];
+        var names = !r.nombres_acompanantes || !r.nombres_acompanantes.length ? '' : (Array.isArray(r.nombres_acompanantes) ? r.nombres_acompanantes.join(' | ') : String(r.nombres_acompanantes));
+        lines.push([csvCell(r.created_at || ''), csvCell(r.envio_id || ''), csvCell(r.tipo_persona || 'invitado'), csvCell(r.invitado_principal || ''), csvCell(r.nombre), csvCell(r.email), csvCell(r.telefono), csvCell(r.asistencia === 'si' ? 'si' : (r.asistencia === 'no' ? 'no' : '')), csvCell(r.num_acompanantes != null ? r.num_acompanantes : ''), csvCell(names), csvCell(r.alergia || ''), csvCell(r.alergias_detalle || ''), csvCell(r.transporte || ''), csvCell(r.transporte_detalle || '')].join(','));
+      }
+      return '\uFEFF' + lines.join('\r\n');
+    }
+
+    function filaHtml(r, bgFila) {
+      var tipo = r.tipo_persona === 'acompanante' ? 'acompanante' : 'inv';
+      var tipoLabel = tipo === 'acompanante' ? 'Acompañante' : 'Invitado/a';
+      var tipoCls = tipo === 'acompanante' ? 'tipo-pill--acomp' : 'tipo-pill--inv';
+      var nombreAcomp = tipo === 'acompanante' && r.nombre ? String(r.nombre).trim() : '';
+      var asistVal = r.asistencia === 'si' ? 'Sí' : (r.asistencia === 'no' ? 'No' : '—');
+      var asistCls = r.asistencia === 'si' ? 'asist--si' : (r.asistencia === 'no' ? 'asist--no' : '');
+      var alergia = r.alergia === 'si' ? (r.alergias_detalle || 'Sí') : (r.alergia === 'no' ? 'No' : '—');
+      var transp = r.transporte === 'si' ? (r.transporte_detalle || 'Sí') : (r.transporte === 'no' ? 'No' : '—');
+      var tr = document.createElement('tr');
+      if (bgFila) tr.style.backgroundColor = bgFila;
+      tr.innerHTML =
+        '<td>' + esc(fmtWhen(r.created_at)) + '</td>' +
+        '<td><span class="tipo-pill ' + tipoCls + '">' + tipoLabel + '</span></td>' +
+        '<td><strong>' + esc(r.nombre) + '</strong></td>' +
+        '<td>' + esc(r.email || '—') + '</td>' +
+        '<td>' + esc(r.telefono || '—') + '</td>' +
+        '<td><span class="asist ' + asistCls + '">' + asistVal + '</span></td>' +
+        '<td>' + esc(nombreAcomp || '—') + '</td>' +
+        '<td>' + esc(fmtNames(r.nombres_acompanantes)) + '</td>' +
+        '<td>' + esc(alergia) + '</td>' +
+        '<td>' + esc(transp) + '</td>';
+      return tr;
+    }
+
+    function agruparPorEnvio(rows) {
+      var map = {};
+      for (var i = 0; i < rows.length; i++) {
+        var r = rows[i];
+        var k = r.envio_id || r.created_at || ('fila-' + i + '-' + (r.nombre || ''));
+        if (!map[k]) map[k] = [];
+        map[k].push(r);
+      }
+      var keys = Object.keys(map);
+      keys.sort(function (a, b) {
+        var ta = (map[a][0] && map[a][0].created_at) || '';
+        var tb = (map[b][0] && map[b][0].created_at) || '';
+        return tb.localeCompare(ta);
+      });
+      return keys.map(function (k) { return map[k]; });
+    }
+
+    /* ── Funciones de edición (lógica intacta) ── */
+    function borrarGrupo(idEnvio) {
+      if (serverMode) { alert('Con el servidor activo no se puede borrar desde aquí. Desconecta para editar la copia local.'); return; }
+      var all = loadLocal();
+      var out = [];
+      for (var i = 0; i < all.length; i++) { var rk = all[i].envio_id || all[i].created_at || ''; if (rk !== idEnvio) out.push(all[i]); }
+      save(out); render();
+    }
+
+    function borrarFilaDeGrupo(idEnvio) {
+      if (serverMode) { alert('Con el servidor activo no se puede borrar desde aquí. Desconecta para editar la copia local.'); return; }
+      var all = loadLocal(); var refs = []; var etiquetas = [];
+      for (var i = 0; i < all.length; i++) {
+        var rk = all[i].envio_id || all[i].created_at || '';
+        if (rk !== idEnvio) continue;
+        refs.push(i);
+        var tipo = all[i].tipo_persona === 'acompanante' ? 'Acompañante' : 'Invitado/a';
+        etiquetas.push((etiquetas.length + 1) + '. ' + (all[i].nombre || 'Sin nombre') + ' (' + tipo + ')');
+      }
+      if (!refs.length) { alert('No se encontraron filas en este grupo.'); return; }
+      var msg = 'Elige el número de la fila a eliminar:\n\n' + etiquetas.join('\n');
+      var sel = parseInt((prompt(msg) || '').trim(), 10);
+      if (isNaN(sel) || sel < 1 || sel > refs.length) { alert('Selección no válida.'); return; }
+      var idxBorrar = refs[sel - 1];
+      var nombre = all[idxBorrar] && all[idxBorrar].nombre ? all[idxBorrar].nombre : 'esta fila';
+      if (!confirm('¿Eliminar "' + nombre + '" de este grupo?')) return;
+      all.splice(idxBorrar, 1); save(all); render();
+    }
+
+    function anadirFilaAGrupo(idEnvio, titular) {
+      if (serverMode) { alert('Con el servidor activo no se pueden añadir filas desde aquí. Desconecta para usar la copia local.'); return; }
+      var nombre = (prompt('Nombre y apellidos del acompañante nuevo:') || '').trim();
+      if (!nombre) return;
+      var all = loadLocal(); var base = null;
+      for (var i = 0; i < all.length; i++) { var rk = all[i].envio_id || all[i].created_at || ''; if (rk === idEnvio) { base = all[i]; break; } }
+      if (!base) { alert('No se encontró el grupo para añadir la fila.'); return; }
+      all.push({
+        created_at: base.created_at || new Date().toISOString(),
+        envio_id: idEnvio, tipo_persona: 'acompanante',
+        invitado_principal: titular || base.invitado_principal || base.nombre || '—',
+        nombre: nombre, email: base.email || '', telefono: base.telefono || '',
+        asistencia: base.asistencia || 'si', num_acompanantes: null, nombres_acompanantes: null,
+        alergia: base.alergia || null, alergias_detalle: base.alergias_detalle || null,
+        transporte: base.transporte || null, transporte_detalle: base.transporte_detalle || null,
+      });
+      save(all); render();
+    }
+
+    function editarGrupo(idEnvio) {
+      if (serverMode) { alert('Con el servidor activo no se puede editar desde aquí. Desconecta para editar la copia local.'); return; }
+      var all = loadLocal(); var idx = [];
+      for (var i = 0; i < all.length; i++) { var rk = all[i].envio_id || all[i].created_at || ''; if (rk === idEnvio) idx.push(i); }
+      if (!idx.length) { alert('No se encontró el grupo para editar.'); return; }
+      var p = idx[0];
+      for (var j = 0; j < idx.length; j++) { if (all[idx[j]].tipo_persona !== 'acompanante') { p = idx[j]; break; } }
+      var principal = all[p];
+      var titularActual = (principal.nombre || principal.invitado_principal || '').trim();
+      var seleccion = (prompt(
+        '¿Qué dato quieres corregir?\n' +
+        '1) Titular del grupo\n' +
+        '2) Email\n' +
+        '3) Teléfono\n\n' +
+        'Puedes indicar varios separados por coma (ej: 1,3)'
+      ) || '').trim();
+      if (!seleccion) return;
+      var parts = seleccion.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      var fixTitular = parts.indexOf('1') !== -1;
+      var fixEmail = parts.indexOf('2') !== -1;
+      var fixTel = parts.indexOf('3') !== -1;
+      if (!fixTitular && !fixEmail && !fixTel) { alert('Selección no válida.'); return; }
+
+      var titularNuevo = titularActual;
+      var emailNuevo = principal.email || '';
+      var telNuevo = principal.telefono || '';
+      if (fixTitular) {
+        titularNuevo = (prompt('Titular del grupo:', titularActual) || '').trim();
+        if (!titularNuevo) return;
+      }
+      if (fixEmail) emailNuevo = (prompt('Email del grupo:', principal.email || '') || '').trim();
+      if (fixTel) telNuevo = (prompt('Teléfono del grupo:', principal.telefono || '') || '').trim();
+      for (var k = 0; k < idx.length; k++) {
+        var row = all[idx[k]];
+        if (fixTitular) {
+          if (idx[k] === p) row.nombre = titularNuevo;
+          if (row.tipo_persona === 'acompanante') row.invitado_principal = titularNuevo;
+        }
+        if (fixEmail) row.email = emailNuevo;
+        if (fixTel) row.telefono = telNuevo;
+      }
+      save(all); render();
+    }
+
+    function anadirDatosGrupo(idEnvio) {
+      if (serverMode) { alert('Con el servidor activo no se pueden añadir datos desde aquí. Desconecta para usar la copia local.'); return; }
+      var all = loadLocal(); var idx = [];
+      for (var i = 0; i < all.length; i++) { var rk = all[i].envio_id || all[i].created_at || ''; if (rk === idEnvio) idx.push(i); }
+      if (!idx.length) { alert('No se encontró el grupo para actualizar datos.'); return; }
+      var base = all[idx[0]];
+      var seleccion = (prompt(
+        '¿Qué dato quieres corregir?\n' +
+        '1) Asistencia\n' +
+        '2) Alergias (sí/no)\n' +
+        '3) Detalle de alergias\n' +
+        '4) Transporte (sí/no)\n' +
+        '5) Detalle de transporte\n\n' +
+        'Puedes indicar varios separados por coma (ej: 1,3,5)'
+      ) || '').trim();
+      if (!seleccion) return;
+      var parts = seleccion.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+      var fixAsist = parts.indexOf('1') !== -1;
+      var fixAlergia = parts.indexOf('2') !== -1;
+      var fixAlergiaDet = parts.indexOf('3') !== -1;
+      var fixTransp = parts.indexOf('4') !== -1;
+      var fixTranspDet = parts.indexOf('5') !== -1;
+      if (!fixAsist && !fixAlergia && !fixAlergiaDet && !fixTransp && !fixTranspDet) { alert('Selección no válida.'); return; }
+
+      var asistencia = base.asistencia || 'si';
+      var alergia = base.alergia || 'no';
+      var alergiasDetalle = base.alergias_detalle || '';
+      var transporte = base.transporte || 'no';
+      var transporteDetalle = base.transporte_detalle || '';
+      if (fixAsist) {
+        asistencia = (prompt('Asistencia del grupo (si/no):', base.asistencia || 'si') || '').trim().toLowerCase();
+        if (asistencia !== 'si' && asistencia !== 'no') asistencia = base.asistencia || 'si';
+      }
+      if (fixAlergia) {
+        alergia = (prompt('¿Alergia? (si/no):', base.alergia || 'no') || '').trim().toLowerCase();
+        if (alergia !== 'si' && alergia !== 'no') alergia = base.alergia || 'no';
+      }
+      if (fixAlergiaDet) alergiasDetalle = (prompt('Detalle de alergias:', base.alergias_detalle || '') || '').trim();
+      if (fixTransp) {
+        transporte = (prompt('¿Necesita transporte? (si/no):', base.transporte || 'no') || '').trim().toLowerCase();
+        if (transporte !== 'si' && transporte !== 'no') transporte = base.transporte || 'no';
+      }
+      if (fixTranspDet) transporteDetalle = (prompt('Detalle de transporte:', base.transporte_detalle || '') || '').trim();
+      for (var j = 0; j < idx.length; j++) {
+        var row = all[idx[j]];
+        if (fixAsist) row.asistencia = asistencia;
+        if (fixAlergia) row.alergia = alergia;
+        if (fixAlergiaDet) row.alergias_detalle = alergiasDetalle;
+        if (fixTransp) row.transporte = transporte;
+        if (fixTranspDet) row.transporte_detalle = transporteDetalle;
+      }
+      save(all); render();
+    }
+
+    function borrarGrupoServidor(idEnvio, titular) {
+      if (!serverMode) return;
+      var token = sessionStorage.getItem(TOKEN_KEY);
+      if (!token) { alert('No hay sesión de servidor activa.'); return; }
+      if (!idEnvio) { alert('No se encontró el identificador del grupo.'); return; }
+      if (!confirm('¿Borrar el grupo de "' + (titular || 'este invitado') + '" en la base de datos? Esta acción no se puede deshacer.')) return;
+
+      fetch('/api/rsvp-delete-group', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token
+        },
+        body: JSON.stringify({ envio_id: idEnvio })
+      })
+        .then(function (r) {
+          if (r.status === 401) {
+            sessionStorage.removeItem(TOKEN_KEY);
+            updateServerButton();
+            throw new Error('unauthorized');
+          }
+          if (!r.ok) throw new Error('delete');
+          return r.json();
+        })
+        .then(function () { render(); })
+        .catch(function (e) {
+          if (e && e.message === 'unauthorized') { alert('Clave incorrecta o sesión caducada. Vuelve a conectar servidor.'); return; }
+          alert('No se pudo borrar en la base de datos.');
+        });
+    }
+
+    function nombreInvitadoPrincipalGrupo(grp) {
+      for (var i = 0; i < grp.length; i++) { var ip = grp[i].invitado_principal; if (ip != null && String(ip).trim() !== '') return String(ip).trim(); }
+      for (var j = 0; j < grp.length; j++) { if (grp[j].tipo_persona !== 'acompanante') { var n = grp[j].nombre; if (n != null && String(n).trim() !== '') return String(n).trim(); } }
+      return grp[0] && grp[0].nombre ? String(grp[0].nombre).trim() : '—';
+    }
+
+    function renderCore(rows, fromServer) {
+      displayRows = rows || [];
+      serverMode = !!fromServer;
+      var container = document.getElementById('bloques-envio');
+      var st = document.getElementById('stats');
+      var leg = document.getElementById('legend-btns');
+      container.innerHTML = '';
+      var si = 0, no = 0;
+      for (var u = 0; u < displayRows.length; u++) {
+        if (displayRows[u].asistencia === 'si') si++;
+        else if (displayRows[u].asistencia === 'no') no++;
+      }
+      var grupos = agruparPorEnvio(displayRows.slice().reverse());
+
+      // Stats cards
+      var originHtml = fromServer
+        ? '<span class="origin-pill origin-pill--server">Servidor SQL</span>'
+        : '<span class="origin-pill origin-pill--local">Navegador</span>';
+      st.innerHTML =
+        '<div class="stat-card stat-card--gold"><div class="stat-card__num">' + grupos.length + '</div><div class="stat-card__label">Envíos</div></div>' +
+        '<div class="stat-card"><div class="stat-card__num">' + displayRows.length + '</div><div class="stat-card__label">Personas</div></div>' +
+        '<div class="stat-card stat-card--green"><div class="stat-card__num">' + si + '</div><div class="stat-card__label">Asisten ✓</div></div>' +
+        '<div class="stat-card stat-card--red"><div class="stat-card__num">' + no + '</div><div class="stat-card__label">No asisten</div></div>' +
+        '<div class="stat-card"><div class="stat-card__num" style="font-size:1.05rem;padding-top:.55rem">' + originHtml + '</div><div class="stat-card__label">Origen</div></div>';
+
+      if (!fromServer && leg) leg.style.display = grupos.length ? 'flex' : 'none';
+      else if (leg) leg.style.display = 'none';
+
+      if (!grupos.length) {
+        container.innerHTML = '<div class="empty"><div class="empty__icon">✉</div><p class="empty__text">Aún no hay confirmaciones recibidas.</p></div>';
+        return;
+      }
+
+      var theadHtml =
+        '<thead><tr>' +
+        '<th>Fecha</th><th>Tipo</th><th>Nombre</th><th>Email</th><th>Tel.</th><th>Asist.</th>' +
+        '<th>Acompañante</th><th>Lista antigua</th><th>Alergias</th><th>Transporte</th>' +
+        '</tr></thead>';
+
+      for (var g = 0; g < grupos.length; g++) {
+        var grp = grupos[g].slice();
+        grp.sort(function (a, b) { return (a.tipo_persona === 'acompanante' ? 1 : 0) - (b.tipo_persona === 'acompanante' ? 1 : 0); });
+        var id0 = (grp[0] && (grp[0].envio_id || grp[0].created_at)) || '';
+        var bg = rowBgForEnvio(id0);
+        var nombrePrincipal = nombreInvitadoPrincipalGrupo(grp);
+        var nPer = grp.length;
+        var fechaCab = grp[0] ? fmtWhen(grp[0].created_at) : '—';
+        var asistPrincipal = null;
+        for (var ai = 0; ai < grp.length; ai++) { if (grp[ai].tipo_persona !== 'acompanante') { asistPrincipal = grp[ai].asistencia; break; } }
+
+        var sec = document.createElement('section');
+        sec.className = 'bloque-envio';
+        sec.style.backgroundColor = bg;
+        sec.style.borderLeftColor = bordeGrupoForEnvio(id0);
+
+        // Header
+        var asistBadge = asistPrincipal === 'si'
+          ? '<span class="badge badge--si">Asiste</span>'
+          : (asistPrincipal === 'no' ? '<span class="badge badge--no">No asiste</span>' : '');
+        var acompBadge = nPer > 1
+          ? '<span class="badge badge--gray">+' + (nPer - 1) + ' acompañante' + (nPer > 2 ? 's' : '') + '</span>'
+          : '';
+
+        sec.innerHTML =
+          '<div class="bloque-envio__header">' +
+          '<div>' +
+          '<div class="bloque-envio__nombre">' + esc(nombrePrincipal) + '</div>' +
+          '<div class="bloque-envio__meta">' + esc(fechaCab) + ' · ' + nPer + ' persona' + (nPer !== 1 ? 's' : '') + '</div>' +
+          '</div>' +
+          '<div class="bloque-envio__badges">' + asistBadge + acompBadge + '</div>' +
+          '</div>';
+
+        // Botones — solo en modo local
+        if (!serverMode) {
+          var acc = document.createElement('div');
+          acc.className = 'bloque-envio__acciones';
+
+          // 🟠 EDITAR (ámbar)
+          var btnEdit = document.createElement('button');
+          btnEdit.type = 'button'; btnEdit.className = 'btn btn--amber btn--mini';
+          btnEdit.title = 'Cambiar nombre, email o teléfono del titular';
+          btnEdit.innerHTML = '✏ Corregir nombre / contacto';
+          btnEdit.onclick = (function (id) { return function () { editarGrupo(id); }; })(id0);
+
+          var btnData = document.createElement('button');
+          btnData.type = 'button'; btnData.className = 'btn btn--amber btn--mini';
+          btnData.title = 'Cambiar asistencia, alergias o transporte';
+          btnData.innerHTML = '✏ Corregir asistencia / alergias';
+          btnData.onclick = (function (id) { return function () { anadirDatosGrupo(id); }; })(id0);
+
+          // separador visual
+          var sep1 = document.createElement('div');
+          sep1.className = 'bloque-envio__acciones-sep';
+
+          // 🔵 AÑADIR (azul)
+          var btnAdd = document.createElement('button');
+          btnAdd.type = 'button'; btnAdd.className = 'btn btn--blue-outline btn--mini';
+          btnAdd.title = 'Añadir un acompañante nuevo a este grupo';
+          btnAdd.innerHTML = '+ Añadir acompañante olvidado olvidado';
+          btnAdd.onclick = (function (id, tit) { return function () { anadirFilaAGrupo(id, tit); }; })(id0, nombrePrincipal);
+
+          // separador visual
+          var sep2 = document.createElement('div');
+          sep2.className = 'bloque-envio__acciones-sep';
+
+          // 🔴 ELIMINAR (rojo)
+          var btnDelRow = document.createElement('button');
+          btnDelRow.type = 'button'; btnDelRow.className = 'btn btn--red btn--mini';
+          btnDelRow.title = 'Eliminar solo una fila de este grupo';
+          btnDelRow.innerHTML = '− Quitar una persona del grupo';
+          btnDelRow.onclick = (function (id) { return function () { borrarFilaDeGrupo(id); }; })(id0);
+
+          var btnDel = document.createElement('button');
+          btnDel.type = 'button'; btnDel.className = 'btn btn--red-solid btn--mini';
+          btnDel.title = 'Borrar todo el grupo (invitado + acompañantes)';
+          btnDel.innerHTML = '🗑 Borrar grupo';
+          btnDel.onclick = (function (id, tit) {
+            return function () {
+              if (confirm('¿Eliminar el grupo de "' + tit + '"? Esta acción no se puede deshacer.')) borrarGrupo(id);
+            };
+          })(id0, nombrePrincipal);
+
+          acc.appendChild(btnEdit);
+          acc.appendChild(btnData);
+          acc.appendChild(sep1);
+          acc.appendChild(btnAdd);
+          acc.appendChild(sep2);
+          acc.appendChild(btnDelRow);
+          acc.appendChild(btnDel);
+          sec.appendChild(acc);
+        } else {
+          var accSrv = document.createElement('div');
+          accSrv.className = 'bloque-envio__acciones';
+          var btnDelSrv = document.createElement('button');
+          btnDelSrv.type = 'button'; btnDelSrv.className = 'btn btn--red-solid btn--mini';
+          btnDelSrv.title = 'Borrar este grupo en la base de datos';
+          btnDelSrv.innerHTML = '🗑 Borrar grupo (BD)';
+          btnDelSrv.onclick = (function (id, tit) { return function () { borrarGrupoServidor(id, tit); }; })(id0, nombrePrincipal);
+          accSrv.appendChild(btnDelSrv);
+          sec.appendChild(accSrv);
+        }
+
+        // Tabla
+        var scroll = document.createElement('div');
+        scroll.className = 'bloque-envio__scroll';
+        var tbl = document.createElement('table');
+        tbl.innerHTML = theadHtml + '<tbody></tbody>';
+        var tbb = tbl.querySelector('tbody');
+        for (var j = 0; j < grp.length; j++) tbb.appendChild(filaHtml(grp[j], 'transparent'));
+        scroll.appendChild(tbl);
+        sec.appendChild(scroll);
+        container.appendChild(sec);
+      }
+    }
+
+    function render() {
+      updateServerButton();
+      var api = '/api/rsvp-rows';
+      var token = sessionStorage.getItem(TOKEN_KEY);
+      if (api && token) {
+        fetch(api, { headers: { Authorization: 'Bearer ' + token } })
+          .then(function (r) {
+            if (r.status === 401) { sessionStorage.removeItem(TOKEN_KEY); updateServerButton(); renderCore(loadLocal(), false); return null; }
+            if (!r.ok) throw new Error('fetch');
+            return r.json();
+          })
+          .then(function (data) { if (data !== null) renderCore(data, true); })
+          .catch(function () { renderCore(loadLocal(), false); });
+      } else {
+        renderCore(loadLocal(), false);
+      }
+    }
+
+    document.getElementById('btn-server').onclick = function () {
+      if (sessionStorage.getItem(TOKEN_KEY)) { sessionStorage.removeItem(TOKEN_KEY); updateServerButton(); render(); return; }
+      var t = (prompt('Clave del panel (igual que PANEL_BEARER_TOKEN en Vercel):') || '').trim();
+      if (!t) return;
+      sessionStorage.setItem(TOKEN_KEY, t); updateServerButton(); render();
+    };
+    document.getElementById('btn-refresh').onclick = render;
+    document.getElementById('btn-export-csv').onclick = function () {
+      var blob = new Blob([rowsToCsv(displayRows)], { type: 'text/csv;charset=utf-8' });
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'rsvp-export.csv'; a.click(); URL.revokeObjectURL(a.href);
+    };
+    document.getElementById('btn-export').onclick = function () {
+      var blob = new Blob([JSON.stringify(displayRows, null, 2)], { type: 'application/json' });
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'rsvp-export.json'; a.click(); URL.revokeObjectURL(a.href);
+    };
+    document.getElementById('btn-import').onclick = function () { document.getElementById('file-import').click(); };
+    document.getElementById('file-import').onchange = function (ev) {
+      var f = ev.target.files[0]; if (!f) return;
+      var r = new FileReader();
+      r.onload = function () {
+        try {
+          var data = JSON.parse(r.result);
+          if (!Array.isArray(data)) throw new Error();
+          save(loadLocal().concat(data));
+          if (sessionStorage.getItem(TOKEN_KEY)) alert('Importación guardada en la copia local. Desconecta el servidor para verla en el panel.');
+          render();
+        } catch (e) { alert('JSON no válido o no es un array.'); }
+        ev.target.value = '';
+      };
+      r.readAsText(f);
+    };
+    document.getElementById('btn-clear').onclick = function () {
+      var msg = serverMode ? 'Esto solo borra la copia local del navegador, no la base de datos SQL. ¿Continuar?' : '¿Borrar todas las entradas de este navegador?';
+      if (confirm(msg)) { save([]); render(); }
+    };
+
+    window.addEventListener('storage', function (e) { if (e.key === KEY && e.storageArea === localStorage) render(); });
+    document.addEventListener('visibilitychange', function () { if (!document.hidden) render(); });
+    window.addEventListener('pageshow', function (ev) { if (ev.persisted) render(); });
+    var _t = null;
+    window.addEventListener('focus', function () { if (_t) clearTimeout(_t); _t = setTimeout(function () { _t = null; render(); }, 120); });
+
+    updateServerButton();
+    render();
+  </script>
+</body>
+
+</html>
