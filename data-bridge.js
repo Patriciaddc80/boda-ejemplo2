@@ -17,7 +17,7 @@
     // ── WhatsApp (números de los novios) ─────────────────────────────────────
     // Formato: código de país + número, sin + ni espacios.
     window.WHATSAPP_TO_LIST = [
-        '34679264784',
-        '34676778204',
+        '34000000000',
+        '34000000000',
     ];
 })();

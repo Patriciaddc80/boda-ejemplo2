@@ -27,7 +27,7 @@
             cream: 'rgba(255, 255, 255, 0.75)',
             'cream-mid': '#d1d5db',
             gold: '#b89a6a',
-            'gold-dark': '#8a6f44',
+            'gold-dark': '#105f6e',
             charcoal: '#3a3632',
             muted: '#8a8480',
           },
@@ -63,36 +63,49 @@
     /* ─── Hero ─── */
     #hero {
       position: relative;
+      width: 100%;
+      max-width: 100%;
       min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      background: rgba(255, 255, 255, 0.75) url('img/fondo-olivo.png') center center / cover no-repeat;
+      background: rgba(255, 255, 255, 0.75) url('img/fondo-eucalipto.jpg') center center / cover no-repeat;
     }
 
     #hero-content {
       position: relative;
       z-index: 1;
       text-align: center;
-      padding: 1.5rem 2rem;
-      max-width: min(90vw, 560px);
+      width: 100%;
+      max-width: min(92vw, 40rem);
       margin-left: auto;
       margin-right: auto;
-      width: 100%;
       box-sizing: border-box;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+      padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
     }
 
     @media (max-width: 1023px) {
       #hero {
-        background-size: cover;
+        min-height: 100dvh;
+        min-height: 100svh;
+        background-size: auto 100%;
         background-position: center center;
+        background-repeat: no-repeat;
       }
 
       #hero-content {
         margin-left: auto;
         margin-right: auto;
+        max-width: min(94vw, 40rem);
+        padding-top: max(1.5rem, env(safe-area-inset-top, 0px));
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
+        padding-left: max(1rem, env(safe-area-inset-left, 0px));
+        padding-right: max(1rem, env(safe-area-inset-right, 0px));
       }
 
       #hero-content .ornament {
@@ -247,7 +260,7 @@
       font-size: 10.5px;
       letter-spacing: .2em;
       text-transform: uppercase;
-      background: #b89a6a;
+      background: #105f6e;
       color: #fff;
       padding: .78rem 2.2rem;
       border: none;
@@ -257,7 +270,7 @@
     }
 
     .btn-gold:hover {
-      background: #8a6f44;
+      background: #105f6e;
       transform: translateY(-1px);
     }
 
@@ -428,7 +441,7 @@
       border-radius: 9999px;
       border: 1px solid #b89a6a;
       background: rgba(255, 255, 255, 0.92);
-      color: #3a3632;
+      color: #105f6e;
       box-shadow: 0 4px 20px rgba(58, 54, 50, 0.12);
       cursor: pointer;
       display: flex;
@@ -440,7 +453,7 @@
     #bg-music-fab:hover {
       background: #b89a6a;
       color: #fff;
-      border-color: #8a6f44;
+      border-color: #105f6e;
     }
 
     #bg-music-fab:active {
@@ -658,26 +671,25 @@
     </div>
   </section>
   <section id="lugar" class="pb-0" style="background:rgba(255, 255, 255, 0.75);">
-    <div class="max-w-5xl mx-auto px-4 py-6 md:py-20">
-      <div class="max-w-xl mx-auto fade-up text-center">
+    <div class="max-w-6xl mx-auto py-6 md:py-20" style="padding-left: clamp(0.75rem, 4vw, 2.25rem); padding-right: clamp(0.75rem, 4vw, 2.25rem);">
+      <div class="max-w-4xl mx-auto fade-up text-center w-full">
         <img src="img/copas-fiesta-1.gif" alt="" class="h-12 w-12 mx-auto mb-3 object-contain opacity-90" />
         <p class="section-eyebrow mb-3">Lugar de celebración</p>
         <h2 class="section-title text-charcoal mb-4" style="font-size: clamp(24px, 4.5vw, 34px);">
-          La Caminera<br />Club de Campo
+          Salón de celebración<br />(por confirmar)
         </h2>
         <div class="flex flex-col items-center gap-3 mb-6">
           <p class="font-sans text-charcoal text-sm leading-relaxed text-center">
-            Calle Vega, s/n<br />
-            13740 Torrenueva, Ciudad Real
+            Dirección pendiente, s/n<br />
+            00000 Ciudad, Provincia
           </p>
         </div>
-        <a href="https://maps.google.com/?q=La+Caminera+Club+de+Campo+Torrenueva+Ciudad+Real" target="_blank"
-          rel="noopener" class="btn-gold">Cómo llegar</a>
+        <a href="https://www.google.com/maps" target="_blank" rel="noopener" class="btn-gold">Cómo llegar</a>
       </div>
       <div class="mt-14 fade-up">
-        <iframe title="La Caminera Club de Campo" width="100%" height="300"
+        <iframe title="Mapa (ubicación pendiente)" width="100%" height="300"
           style="border:none; filter:grayscale(.15) contrast(.95); display:block;" loading="lazy"
-          src="https://maps.google.com/maps?q=La+Caminera+Club+de+Campo+Torrenueva+Ciudad+Real&output=embed">
+          src="https://maps.google.com/maps?q=Spain&z=5&output=embed">
         </iframe>
       </div>
     </div>
@@ -719,7 +731,7 @@
           </div>
           <div>
             <label class="form-label" for="telefono">Teléfono</label>
-            <input id="telefono" name="telefono" type="tel" class="form-input" placeholder="+34 600 000 000" />
+            <input id="telefono" name="telefono" type="tel" class="form-input" placeholder="+34 0000 0000" />
           </div>
           <div>
             <span class="form-label text-center">¿Confirmas tu asistencia?</span>
@@ -866,18 +878,18 @@
           <h3 class="font-display font-light text-charcoal mb-4" style="font-size:20px;">
             Leonardo<br />GARCÍA GARCÍA
           </h3>
-          <a href="tel:+34676778204"
+          <a href="tel:+34000000000"
             class="contact-pill flex items-center gap-2 text-sm text-charcoal hover:text-gold transition-colors justify-center mb-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold flex-shrink-0" fill="none"
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold-dark flex-shrink-0" fill="none"
               viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
             </svg>
-            676 778 204
+            00000000
           </a>
           <a href="mailto:sebas100394@gmail.com"
             class="contact-pill flex items-center gap-2 text-sm text-charcoal hover:text-gold transition-colors justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold flex-shrink-0" fill="none"
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold-dark flex-shrink-0" fill="none"
               viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -890,9 +902,18 @@
           <h3 class="font-display font-light text-charcoal mb-4" style="font-size:20px;">
             Daniela Depablos<br />Carrillo
           </h3>
+          <a href="tel:+34000000000"
+            class="contact-pill flex items-center gap-2 text-sm text-charcoal hover:text-gold transition-colors justify-center mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold-dark flex-shrink-0" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            00000000
+          </a>
           <a href="mailto:danieladepablos@gmail.com"
             class="contact-pill flex items-center gap-2 text-sm text-charcoal hover:text-gold transition-colors justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold flex-shrink-0" fill="none"
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gold-dark flex-shrink-0" fill="none"
               viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
@@ -906,7 +927,7 @@
   <section class="py-5 md:py-8 px-4 text-center fade-up" style="background:#f8f3ef;">
     <p class="section-eyebrow mb-6" style="color:#462a1c;">El comienzo de nuestra historia</p>
   </section>
-  <footer class="py-2 px-4 text-center" style="background:#2e2926;">
+  <footer class="py-2 px-4 text-center" style="background:#105f6e;">
     <p class="font-display text-[#ede6d8] tracking-[.35em] font-light mb-1" style="font-size:18px;">
       Daniela Depablos <span style="color:#b89a6a;">y</span> Pablo Carrillo <br> Carrillo
     </p>
@@ -920,7 +941,7 @@
     </svg>
   </button>
   <div id="toast" role="status" aria-live="polite">✓ ¡Gracias! Hemos recibido viestra confirmación.</div>
-  <script>window.WHATSAPP_TO_LIST = ['34679264784', '34676778204'];</script>
+  <script>window.WHATSAPP_TO_LIST = ['34000000000', '34000000000'];</script>
   <script>
     (function () {
       const target = new Date('2026-09-12T19:00:00+02:00');
@@ -1163,7 +1184,7 @@
       }
       const waList = Array.isArray(window.WHATSAPP_TO_LIST) && window.WHATSAPP_TO_LIST.length
         ? window.WHATSAPP_TO_LIST.map(function (n) { return String(n || '').trim(); }).filter(Boolean)
-        : ['34679264784', '34676778204'];
+        : ['34000000000', '34000000000'];
       const btn = document.getElementById('rsvp-btn');
       if (btn) {
         btn.disabled = true;
