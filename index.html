@@ -82,12 +82,35 @@
       justify-content: center;
       overflow: hidden;
       background-color: #faf8f5;
-      background-image: url('img/fondo-eucalipto.jpg');
-      background-position: center top;
-      background-repeat: no-repeat;
-      background-size: auto 100%;
       border-bottom: none;
       box-shadow: none;
+    }
+
+    /* Imagen + velo verde solo en borde inferior (fino); máscara suaviza el pie del JPG */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent calc(100% - 3.25rem),
+          rgba(58, 92, 74, 0.12) calc(100% - 1rem),
+          rgba(44, 72, 58, 0.32) 100%
+        ),
+        url('img/fondo-eucalipto.jpg');
+      background-position: center top, center top;
+      background-repeat: no-repeat, no-repeat;
+      background-size: auto 100%, auto 100%;
+      -webkit-mask-image: linear-gradient(to bottom, #fff 80%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #fff 80%, transparent 100%);
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
     }
 
     #hero:focus {
